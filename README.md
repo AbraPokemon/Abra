@@ -1,5 +1,7 @@
 # GroupProject - *KickStater*
 
+[![Circle CI](https://circleci.com/gh/AbraPokemon/KickStater/tree/master.svg?style=svg)](https://circleci.com/gh/AbraPokemon/KickStater/tree/master)
+
 **KickStater** is a Ruby on Rails application.
 
 Submitted by: **AbraTeam**
