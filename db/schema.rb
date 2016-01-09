@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160109092555) do
+ActiveRecord::Schema.define(version: 20160109094724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,17 @@ ActiveRecord::Schema.define(version: 20160109092555) do
 
   add_index "rewards", ["project_id"], name: "index_rewards_on_project_id", using: :btree
 
+  create_table "stories", force: :cascade do |t|
+    t.integer  "project_id"
+    t.string   "project_video_url"
+    t.text     "description"
+    t.text     "risk_challenges"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "stories", ["project_id"], name: "index_stories_on_project_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "full_name"
     t.string   "avatar_url"
@@ -95,4 +106,5 @@ ActiveRecord::Schema.define(version: 20160109092555) do
   add_foreign_key "projects", "categories"
   add_foreign_key "projects", "users"
   add_foreign_key "rewards", "projects"
+  add_foreign_key "stories", "projects"
 end
