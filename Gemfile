@@ -25,4 +25,5 @@ group :test do
   gem 'factory_girl'
   gem 'faker'
   gem 'database_cleaner'
+  gem 'coveralls', require: false
 end
