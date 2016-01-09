@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :lockable
 
   has_many :projects
+  has_many :fundings
 
   validates :full_name, :location, presence: true
   validates :full_name, uniqueness: true

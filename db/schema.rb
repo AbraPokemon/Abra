@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160109094724) do
+ActiveRecord::Schema.define(version: 20160109100157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,19 @@ ActiveRecord::Schema.define(version: 20160109094724) do
 
   add_index "comments", ["project_id"], name: "index_comments_on_project_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "fundings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.integer  "reward_id"
+    t.decimal  "pledge_amount"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "fundings", ["project_id"], name: "index_fundings_on_project_id", using: :btree
+  add_index "fundings", ["reward_id"], name: "index_fundings_on_reward_id", using: :btree
+  add_index "fundings", ["user_id"], name: "index_fundings_on_user_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.string   "title"
@@ -103,6 +116,9 @@ ActiveRecord::Schema.define(version: 20160109094724) do
 
   add_foreign_key "comments", "projects"
   add_foreign_key "comments", "users"
+  add_foreign_key "fundings", "projects"
+  add_foreign_key "fundings", "rewards"
+  add_foreign_key "fundings", "users"
   add_foreign_key "projects", "categories"
   add_foreign_key "projects", "users"
   add_foreign_key "rewards", "projects"
