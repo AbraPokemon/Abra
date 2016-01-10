@@ -1,9 +1,9 @@
-# GroupProject - *KickStater*
+# GroupProject - *Abra*
 
 [![Circle CI](https://circleci.com/gh/AbraPokemon/KickStater/tree/master.svg?style=svg)](https://circleci.com/gh/AbraPokemon/KickStater/tree/master)
 [![Coverage Status](https://coveralls.io/repos/AbraPokemon/KickStater/badge.png?branch=master&service=github)](https://coveralls.io/github/AbraPokemon/KickStater?branch=master)
 
-**KickStater** is a Ruby on Rails application.
+**Abra** is a Ruby on Rails application.
 
 Submitted by: **AbraTeam**
 
