@@ -3,7 +3,7 @@
 [![Circle CI](https://circleci.com/gh/AbraPokemon/KickStater/tree/master.svg?style=svg)](https://circleci.com/gh/AbraPokemon/KickStater/tree/master)
 [![Coverage Status](https://coveralls.io/repos/AbraPokemon/KickStater/badge.png?branch=master&service=github)](https://coveralls.io/github/AbraPokemon/KickStater?branch=master)
 
-**Abra** is a Ruby on Rails application.
+**Abra** is a Ruby on Rails application that allows users to contribute in charity group fund, and create fundraising for charity activity.
 
 Submitted by: **AbraTeam**
 
@@ -15,27 +15,34 @@ The following **required** functionality:
 
 ### User
 
-* [ ] User can sign up by providing their email, password
-* [ ] User have to verify their account by email, phone, and location.
-* [ ] User can login with their email, password
-* [ ] User can login with facebook, twitter, google plush account
-* [ ] User can create project, project has to wait 3 days for admin can review and approve it.
-* [ ] User can add rewards for project
-* [ ] User can add story for project that will introduce project (Video, image, ...)
-* [ ] User can preview project before submit to system.
-* [ ] User can back every project which has been reviewed by admin.
-* [ ] User can comment and rating for every project.
-* [ ] User can search to find projects by title, location, ...
-* [ ] User can discover projects by categories
-* [ ] User can receive their moneys whenever their product are ready to release, and send it to their charity.
+* [ ] User can sign up by providing their email, password.
+* [ ] User have to verify their account by email, phone after signing up.
+* [ ] User can sign in with their email, password.
+* [ ] User can sign in with facebook, twitter, google plus account.
+* [ ] User can create charity event with name, location, time, story, limited participant, donation due date and required amount.
+* [ ] User can edit event story which will introduce their event (video, image, ...)
+* [ ] User can preview event before submit to system.
+* [ ] User can contribute to the charity event by joining or giving donation.
+* [ ] User can comment on every events.
+* [ ] User can rate event. Those rating will be use to calculate user reputaion.
+* [ ] User can report event if he/she see that event is cheating. Those report will be use to calculate user reputaion.
+* [ ] User can search event by name, location. Event will order by rating, newest event.
+* [ ] User who created the event will be received money from event after donation due date.
 * [ ] User can send message to another User.
-* [ ] User and Charity will be receive email, sms if product are ready for release.
-* [ ] Charity can back project by Payment method (VISA, Mastercard,...)
+* [ ] User will be received email when anyone join or donate to his event.
+* [ ] User can see notification about who joining his event, who donation to his event.
+* [ ] User can search charity group by group name, location. Charity group will order by rating.
+* [ ] User can contribute to the charity group by giving donation.
+* [ ] User can pay by using payment method like Visa, Master card, Internet banking.
+* [ ] User can see the leaderboard of User reputation.
 
 ### Admin
-* [ ] Admin can see list of projects which has been submitted by User and approve it.
-* [ ] Admin also disable any projects
-* [ ] Admin can lock any account if he/she see any problem, or message complain about product of that account.
+* [ ] Admin can see list of event which has been submitted by User
+* [ ] Admin can approve event to display it on system.
+* [ ] Admin can disable any events.
+* [ ] Admin can create/update/disable charity group.
+* [ ] Admin can lock any account if he see any problem.
+* [ ] Admin can send message to User.
 
 ### Coding
 * [ ] Every features have to have scenario, unittest
