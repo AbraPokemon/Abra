@@ -25,7 +25,7 @@ The following **required** functionality:
 * [ ] User can join or donate to the charity event.
 * [ ] User can comment on every events.
 * [ ] User can rate event. Those rating will be use to calculate user reputaion.
-* [ ] User can report event if he/she see that event is cheating. Those report will be use to calculate user reputaion.
+* [ ] User can report event if he see that event is cheating. Those report will be use to calculate user reputaion.
 * [ ] User can search event by name, location. Event will order by rating, newest event.
 * [ ] User who created the event will be received money from event after donation due date.
 * [ ] User can send message to another User.
