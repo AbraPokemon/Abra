@@ -3,7 +3,7 @@
 [![Circle CI](https://circleci.com/gh/AbraPokemon/KickStater/tree/master.svg?style=svg)](https://circleci.com/gh/AbraPokemon/KickStater/tree/master)
 [![Coverage Status](https://coveralls.io/repos/AbraPokemon/KickStater/badge.png?branch=master&service=github)](https://coveralls.io/github/AbraPokemon/KickStater?branch=master)
 
-**Abra** is a Ruby on Rails application that allows users to contribute in charity group fund, and create fundraising for charity activity.
+**Abra** is a Ruby on Rails application that allows users to donate in charity group, create fundraising, join or donate to charity activity.
 
 Submitted by: **AbraTeam**
 
@@ -22,7 +22,7 @@ The following **required** functionality:
 * [ ] User can create charity event with name, location, time, story, limited participant, donation due date and required amount.
 * [ ] User can edit event story which will introduce their event (video, image, ...)
 * [ ] User can preview event before submit to system.
-* [ ] User can contribute to the charity event by joining or giving donation.
+* [ ] User can join or donate to the charity event.
 * [ ] User can comment on every events.
 * [ ] User can rate event. Those rating will be use to calculate user reputaion.
 * [ ] User can report event if he/she see that event is cheating. Those report will be use to calculate user reputaion.
@@ -30,9 +30,9 @@ The following **required** functionality:
 * [ ] User who created the event will be received money from event after donation due date.
 * [ ] User can send message to another User.
 * [ ] User will be received email when anyone join or donate to his event.
-* [ ] User can see notification about who joining his event, who donation to his event.
+* [ ] User can see notification about who join or donate to his event.
 * [ ] User can search charity group by group name, location. Charity group will order by rating.
-* [ ] User can contribute to the charity group by giving donation.
+* [ ] User can donate to the charity group.
 * [ ] User can pay by using payment method like Visa, Master card, Internet banking.
 * [ ] User can see the leaderboard of User reputation.
 
