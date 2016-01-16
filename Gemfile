@@ -13,6 +13,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'omniauth'
 
+group :development do
+  gem "letter_opener"
+end
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console'
@@ -21,6 +25,7 @@ group :development, :test do
 end
 
 group :test do
+
   gem 'shoulda-matchers'
   gem 'factory_girl'
   gem 'faker'
