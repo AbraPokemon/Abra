@@ -3,3 +3,10 @@ deployment:
     branch: master
     heroku:
       appname: abracharity
+    commands:
+      - heroku maintenance:on --app abracharity
+      - heroku scale worker=0 --app abracharity
+      - git push git@heroku.com:abracharity.git $CIRCLE_SHA1:refs/heads/master
+      - heroku run rake db:migrate --app abracharity
+      - heroku scale worker=1 --app abracharity
+      - heroku maintenance:off --app abracharity
