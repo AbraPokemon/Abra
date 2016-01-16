@@ -1,8 +1,5 @@
 deployment:
   staging:
-    branch: master
-    heroku:
-      appname: abracharity
     commands:
       - heroku maintenance:on --app abracharity
       - heroku scale worker=0 --app abracharity
