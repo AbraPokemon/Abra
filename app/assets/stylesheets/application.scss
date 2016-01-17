@@ -1,0 +1,115 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "mixin";
+@import "reset";
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300&subset=latin,vietnamese);
+
+body{
+  color: $color-text1;
+  margin-top: 70px;
+  font: {
+    family: 'Roboto Condensed', sans-serif;
+    size: $size-text;
+  }
+  min-width: 1024px;
+}
+
+header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: $color-text2;
+  z-index: 100;
+  min-width: 1024px;
+  @include css3-styles(box-shadow, 0px 0px 10px 0px $color-text1);
+  nav{
+    height: 70px;
+    width: 100%;
+  }
+  .logo{
+    height: 70px;
+    img{
+      height: 40px;
+      padding: ($size-unit + 5) 0;
+    }
+  }
+  .search-form{
+    margin: 0 $size-unit-double;
+    border: 1px solid $color-line;
+    padding: $size-unit-half ($size-unit + 5);
+    @include css3-styles(border-radius, $size-unit-half);
+    input{
+      padding: $size-unit;
+      width: 250px;
+      border: none;
+      outline: none;
+      font-size: $size-text;
+    }
+  }
+  .menu{
+      width: 458px;
+      li{
+        margin-left: $size-unit;
+        &:first-child{
+          margin-left: 0;
+          margin-right: $size-unit;
+        }
+      }
+  }
+}
+
+footer{
+  border-top: $size-unit solid $color-main;
+  background: $color-line;
+  min-width: 1024px;
+  .blocks{
+    margin-top: $size-unit-double;
+    margin-bottom: $size-unit-double;
+    .block{
+      width: 250px;
+      margin-left: $size-unit-double;
+      &:first-child{
+        margin-left: 0;
+      }
+      &:last-child{
+        width: 476px;
+      }
+    }
+    h4{
+      font-size: $size-h4;
+      border-bottom: 1px dotted $color-main;
+      padding-bottom: $size-unit;
+      margin-bottom: $size-unit;
+      color: $color-main;
+    }
+    li{
+      padding: $size-unit-half 0;
+    }
+  }
+  .info{
+    background: $color-main;
+    color: $color-text2;
+    padding: $size-unit 0;
+  }
+}
+
+.wrapper{
+  width: 1024px;
+  margin: 0 auto;
+}

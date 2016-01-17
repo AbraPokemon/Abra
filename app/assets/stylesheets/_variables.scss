@@ -1,0 +1,27 @@
+/*
+  Colors
+*/
+$color-main: #3572b0;
+$color-sub1: #f15c75;
+$color-sub2: #654982;
+$color-text1: #333;
+$color-text2: #fff;
+$color-line: #e9e9e9;
+
+/*
+  Sizes
+*/
+$size-text: 13px;
+$size-h4: 18px;
+$size-text-large: $size-text * 3;
+$size-text-medium: $size-text * 2;
+$size-text-small: $size-text * 3/4;
+
+$size-unit: 10px;
+$size-unit-double: $size-unit * 2;
+$size-unit-half: $size-unit / 2;
+
+/*
+  Global
+*/
+$vendors: webkit, moz, o

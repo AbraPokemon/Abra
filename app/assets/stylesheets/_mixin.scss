@@ -1,0 +1,78 @@
+@import "variables";
+
+@mixin absolute-center($width) {
+  position: absolute;
+  left: calc(50% - (#{$width} / 2));
+}
+
+@mixin css3-styles($attribute, $value) {
+  @each $vendor in $vendors{
+    -#{$vendor}-#{$attribute}: $value;
+  }
+  #{$attribute}: $value;
+}
+
+.text{
+  &-center{
+    text-align: center;
+  }
+  &-left{
+    text-align: left;
+  }
+  &-right{
+    text-align: right;
+  }
+}
+
+.inline{
+  display: inline-block;
+  &.top{
+    vertical-align: top;
+  }
+  &.middle{
+    vertical-align: middle;
+  }
+}
+
+.button{
+  padding: $size-unit;
+  text-decoration: none;
+  cursor: pointer;
+  @include css3-styles(border-radius, $size-unit-half);
+  &.main{
+    background-color: $color-sub1;
+    color: $color-text2;
+    &:hover{
+      background-color: lighten($color-sub1, 10%);
+    }
+  }
+  &.icon{
+    .fa{
+      width: $size-unit-double;
+    }
+  }
+  &:hover{
+    background-color: lighten($color-sub1, 10%);
+  }
+  &.big{
+    font-size: $size-text-medium;
+    &.icon{
+      .fa{
+        width: $size-unit-double * 2;
+      }
+    }
+  }
+}
+
+.link{
+  color: $color-text1;
+  text-decoration: none;
+  &.icon{
+    .fa{
+      width: 20px;
+    }
+  }
+  &:hover{
+    text-decoration: underline;
+  }
+}
