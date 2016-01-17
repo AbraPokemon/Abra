@@ -13,6 +13,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'omniauth'
 gem 'font-awesome-sass'
+gem 'sidekiq'
+gem 'devise-async'
+gem 'sinatra', :require => nil
 
 group :development do
   gem "letter_opener"
