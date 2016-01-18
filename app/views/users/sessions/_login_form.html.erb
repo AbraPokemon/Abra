@@ -1,24 +1,20 @@
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<div class="login_dropdown">
+  <a href="#" class="link text-left icon link_dropdown"><i class="fa fa-sign-in"></i>Sign in</a>
+  <div class="dropdown">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "search-form") do |f| %>
+      <%= f.email_field :email, autofocus: true %>
+      <%= f.password_field :password, autocomplete: "off" %>
+      <% if devise_mapping.rememberable? -%>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end -%>
+      <%= f.submit "Log in" %>
+      <!-- FaceBook -->
+      <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+      <!-- Twitter -->
+
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>
