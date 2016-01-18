@@ -1,3 +1,24 @@
-<div id="login">
-  <%= render "users/sessions/new" %>
-</div>
+<header>
+  <nav class="wrapper">
+    <%= link_to root_path, class: "logo inline middle" do %>
+      <img src="<%= image_path('logo.png') %>" alt="Logo"/>
+    <% end %>
+    <form class="search-form inline middle">
+      <i class="fa fa-search fa-2x inline middle"></i>
+      <input type="text" class="inline middle" placeholder="Hey! What event are you interested in?"/>
+    </form>
+    <ul class="menu text-right inline middle">
+      <li class="inline top">
+        <a href="open_create_event_popup" class="button text-left main icon"><i class="fa fa-plus"></i>Create an event</a>
+      </li>
+      <li class="inline top">
+        <%= link_to new_user_registration_path, class: "link text-left icon" do %>
+          <i class="fa fa-user-plus"></i>Sign up
+        <% end %>
+      </li>
+      <li class="inline top">
+        <%= render 'users/sessions/new' %>
+      </li>
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,30 @@
+@import "mixin";
+
+.registration{
+  height: 500px;
+  .registration-banner{
+    display: inline-block;
+    width: 600px;
+  }
+  .registration_form{
+    display: inline-block;
+    width: 400px;
+    h2{
+      font-size: 50px
+    }
+    form{
+      @include css3-styles(border-radius, $size-unit-half);
+      input{
+        padding: $size-unit;
+        margin: 10px 0;
+        border: 1px solid $color-line;
+        width: 400px;
+        outline: none;
+        font-size: $size-text;
+      }
+      .submit{
+        float: right;
+      }
+    }
+  }
+}
