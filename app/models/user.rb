@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
 
   has_many :projects
   has_many :fundings
+  has_many :events
+  has_many :donations, as: :donor
 
   validates :full_name, :location, presence: true
   validates :full_name, uniqueness: true
