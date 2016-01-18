@@ -11,78 +11,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160109100157) do
+ActiveRecord::Schema.define(version: 20160118033148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "categories", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "comments", force: :cascade do |t|
+    t.integer  "event_id"
     t.integer  "user_id"
-    t.integer  "project_id"
     t.text     "body"
-    t.integer  "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "comments", ["project_id"], name: "index_comments_on_project_id", using: :btree
+  add_index "comments", ["event_id"], name: "index_comments_on_event_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
-  create_table "fundings", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "project_id"
-    t.integer  "reward_id"
-    t.decimal  "pledge_amount"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+  create_table "donations", force: :cascade do |t|
+    t.integer  "donatable_id"
+    t.string   "donatable_type"
+    t.integer  "donor_id"
+    t.string   "donor_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
-  add_index "fundings", ["project_id"], name: "index_fundings_on_project_id", using: :btree
-  add_index "fundings", ["reward_id"], name: "index_fundings_on_reward_id", using: :btree
-  add_index "fundings", ["user_id"], name: "index_fundings_on_user_id", using: :btree
+  add_index "donations", ["donatable_type", "donatable_id"], name: "index_donations_on_donatable_type_and_donatable_id", using: :btree
+  add_index "donations", ["donor_type", "donor_id"], name: "index_donations_on_donor_type_and_donor_id", using: :btree
 
-  create_table "projects", force: :cascade do |t|
-    t.string   "title"
-    t.string   "project_thumbnail_url"
-    t.text     "short_blurb"
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
     t.string   "location"
+    t.datetime "start_time"
+    t.text     "short_description"
+    t.text     "story"
+    t.integer  "number_of_participant"
+    t.decimal  "required_amount"
+    t.datetime "donation_due_date"
     t.integer  "user_id"
-    t.integer  "category_id"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
 
-  add_index "projects", ["category_id"], name: "index_projects_on_category_id", using: :btree
-  add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
-
-  create_table "rewards", force: :cascade do |t|
-    t.decimal  "pledge"
-    t.text     "description"
-    t.datetime "estimated_delivery"
-    t.integer  "limited_quantity"
-    t.integer  "project_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-  end
-
-  add_index "rewards", ["project_id"], name: "index_rewards_on_project_id", using: :btree
-
-  create_table "stories", force: :cascade do |t|
-    t.integer  "project_id"
-    t.string   "project_video_url"
-    t.text     "description"
-    t.text     "risk_challenges"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-  end
-
-  add_index "stories", ["project_id"], name: "index_stories_on_project_id", using: :btree
+  add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "full_name"
@@ -114,13 +85,19 @@ ActiveRecord::Schema.define(version: 20160109100157) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "comments", "projects"
+  create_table "votes", force: :cascade do |t|
+    t.integer  "votable_id"
+    t.string   "votable_type"
+    t.integer  "voter_id"
+    t.string   "voter_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "votes", ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id", using: :btree
+  add_index "votes", ["voter_type", "voter_id"], name: "index_votes_on_voter_type_and_voter_id", using: :btree
+
+  add_foreign_key "comments", "events"
   add_foreign_key "comments", "users"
-  add_foreign_key "fundings", "projects"
-  add_foreign_key "fundings", "rewards"
-  add_foreign_key "fundings", "users"
-  add_foreign_key "projects", "categories"
-  add_foreign_key "projects", "users"
-  add_foreign_key "rewards", "projects"
-  add_foreign_key "stories", "projects"
+  add_foreign_key "events", "users"
 end

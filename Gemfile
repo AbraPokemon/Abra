@@ -14,6 +14,10 @@ gem 'devise'
 gem 'omniauth'
 gem 'font-awesome-sass'
 
+group :development do
+  gem "letter_opener"
+end
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console'
@@ -22,6 +26,7 @@ group :development, :test do
 end
 
 group :test do
+
   gem 'shoulda-matchers'
   gem 'factory_girl'
   gem 'faker'
