@@ -11,14 +11,7 @@
       <li class="inline top">
         <a href="open_create_event_popup" class="button text-left main icon"><i class="fa fa-plus"></i>Create an event</a>
       </li>
-      <li class="inline top">
-        <%= link_to new_user_registration_path, class: "link text-left icon" do %>
-          <i class="fa fa-user-plus"></i>Sign up
-        <% end %>
-      </li>
-      <li class="inline top">
-        <%= render 'users/sessions/new' %>
-      </li>
+      <%= render 'users/sessions/new' %>
     </ul>
   </nav>
 </header>

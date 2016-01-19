@@ -1,7 +1,8 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     @user = User.from_omniauth(request.env["omniauth.auth"])
-    @user.location = request.location.city
+    @user.location = request.location.city.present? ? request.location.city : "Ho Chi Minh"
+
     if @user.save
       sign_in_and_redirect @user, :event => :authentication
       set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?

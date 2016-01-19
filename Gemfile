@@ -13,12 +13,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'omniauth-twitter'
 
 gem 'font-awesome-sass'
 gem 'sidekiq'
 gem 'devise-async'
 gem 'geocoder'
+gem 'devise-async'
 gem 'sinatra', :require => nil
 
 group :development do

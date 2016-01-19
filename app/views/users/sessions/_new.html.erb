@@ -1,5 +1,13 @@
 <% if user_signed_in? %>
+
   <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
 <% else %>
-  <%= render "users/sessions/login_form" %>
+  <li class="inline top">
+    <%= link_to new_user_registration_path, class: "link text-left icon" do %>
+      <i class="fa fa-user-plus"></i>Sign up
+    <% end %>
+  </li>
+  <li class="inline top">
+    <%= render "users/sessions/login_form" %>
+  </li>
 <% end %>
