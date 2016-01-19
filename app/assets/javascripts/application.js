@@ -18,5 +18,7 @@
 //= require velocity.ui
 //= require masonry.pkgd.min
 //= require turbolinks
+//= require jquery.formvalidate
+//= require toastr.min
 //= require_tree .
 //= require masonry.pkgd
