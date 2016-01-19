@@ -3,9 +3,7 @@
   <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
 <% else %>
   <li class="inline top">
-    <%= link_to new_user_registration_path, class: "link text-left icon" do %>
-      <i class="fa fa-user-plus"></i>Sign up
-    <% end %>
+    <%= render "users/registrations/form" %>
   </li>
   <li class="inline top">
     <%= render "users/sessions/login_form" %>

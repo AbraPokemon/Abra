@@ -8,8 +8,6 @@ class User < ActiveRecord::Base
   has_many :votes, as: :voter
   has_many :comments
 
-  validates :full_name, :location, presence: true
-
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
       user.email = auth.info.email
