@@ -1,6 +1,38 @@
+@import "mixin";
+
 .login_dropdown{
   position: absolute;
   .dropdown{
     display: none;
+    position: absolute;
+    left: -130px;
+    background-color: white;
+    padding: 10px;
+    margin-top: 20px;
+    border: 1px solid $color-line;
+    box-shadow: 5px 5px 5px #000;
+    form{
+      input{
+        @include css3-styles(border-radius, $size-unit-half);
+        padding: $size-unit;
+        margin: 10px 0;
+        border: 1px solid $color-line;
+        width: 200px;
+        outline: none;
+        font-size: $size-text;
+      }
+      .remember{
+        float: left;
+        .remember-cb{
+          width: auto;
+        }
+      }
+      .btn-login{
+        width: 100%;
+      }
+      .btn-fb-login{
+        width: 100%;
+      }
+    }
   }
 }
