@@ -45,8 +45,8 @@ header{
   .logo{
     height: 70px;
     img{
-      height: 40px;
-      padding: ($size-unit + 5) 0;
+      height: 50px;
+      padding: $size-unit 0;
     }
   }
   .search-form{
@@ -61,9 +61,17 @@ header{
       outline: none;
       font-size: $size-text;
     }
+    select{
+      border: none;
+      background: none;
+      font-size: $size-text;
+      outline: none;
+      box-shadow: none;
+      width: 150px;
+    }
   }
   .menu{
-      width: 458px;
+      width: 323px;
       li{
         margin-left: $size-unit;
         &:first-child{

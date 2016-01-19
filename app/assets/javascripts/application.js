@@ -12,6 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require mousetrap.min
+//= require mousetrap-global-bind.min
+//= require velocity.min
+//= require velocity.ui
+//= require masonry.pkgd.min
 //= require turbolinks
 //= require_tree .
 //= require masonry.pkgd
