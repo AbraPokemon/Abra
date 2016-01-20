@@ -85,9 +85,13 @@
   .block{
     width: 200px;
     height: 400px;
-    border: 1px solid;
+    border: 1px solid $color-line;
     box-sizing: border-box;
-    margin: 0 $size-unit $size-unit 0;
+    margin: 0 $size-unit-double $size-unit-double 0;
+    border-radius: 5px;
+    overflow: hidden;
+    background: $color-text2;
+    @include css3-styles(border-radius, $size-unit-half);
     img{
       width:100%;
       height: 133px;
@@ -100,48 +104,139 @@
     p{
       margin: $size-unit-half 0;
       padding: 0 $size-unit;
+      height: 121px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      line-height: 15px;
+      @include css3-styles(-webkit-line-clamp, 8);
+      @include css3-styles(-webkit-box-orient, vertical);
+    }
+    .button{
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      opacity: 0;
+      @include css3-styles(transform, translate(-50%, 0));
+    }
+    .love-us{
+      position: absolute;
+      background: rgba(51, 51, 51, 0.1);
+      padding: ($size-unit-half - 1) $size-unit;
+      border-radius: $size-unit-half;
+      top: 108px;
+      right: $size-unit;
+      color: $color-text2;
+      font-size: $size-text - 2;
+      text-decoration: none;
+      i{
+        color: $color-sub1;
+        margin-left: $size-unit-half;
+      }
+    }
+    .more{
+      border-top: 1px dotted $color-text1;
+      padding-top: $size-unit-half;
+      margin: $size-unit;
+      font-size: 11px;
+      li{
+        margin-top: $size-unit-half;
+      }
+      i{
+        width: $size-unit-double;
+        text-align: center;
+      }
     }
     .progress-bar{
       position: absolute;
-      width: calc(100% - 10px);
-      bottom: 4px;
-      left: 4px;
+      width: 100%;
+      bottom: 0px;
+      left: 0px;
       height: $size-unit-double;
-      border: 1px solid $color-line;
+      background: $color-line;
       .bar{
         position: absolute;
         top: 0;
         left: 0;
         height: 100%;
-        background: $color-sub1;
-        z-index: -1;
+        background: $color-green;
+        z-index: 0;
+        opacity: 0.5;
       }
       .percent{
         display: block;
         text-align: center;
         line-height: 22px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: $color-text2;
+        width: 100%;
       }
       .backer, .raised{
         position: absolute;
         display: block;
         top: -15px;
         font-size: 10px;
-        left: 0;
+        left: $size-unit;
         strong{
           margin-right: $size-unit-half;
         }
       }
       .raised{
         left: auto;
-        right: 0;
+        right: $size-unit;
       }
     }
     &.p1{
       width: 300px;
+      .button{
+        top: 85px;
+      }
+      img{
+        height: 199px;
+      }
+      p{
+        height: 59px;
+        @include css3-styles(-webkit-line-clamp, 4);
+      }
+      .love-us{
+        top: 172px;
+      }
     }
     &.p2{
       width: 400px;
+      p{
+        height: 31px;
+        @include css3-styles(-webkit-line-clamp, 2);
+      }
+      .button{
+        top: 110px;
+      }
+      .love-us{
+        top: 238px;
+      }
+      img{
+        height: 265px;
+      }
+      .more{
+        margin: $size-unit-half $size-unit;
+        li{
+          display: inline-block;
+          vertical-align: top;
+          margin-left: $size-unit;
+          &:first-child{
+            margin-left: 0;
+          }
+        }
+      }
     }
+    &:hover{
+      .bar, .button{
+        opacity: 1;
+      }
+    }
+
   }
 }
 
