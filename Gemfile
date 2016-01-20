@@ -13,6 +13,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'omniauth'
 gem 'font-awesome-sass'
+gem 'simple_form'
+gem "wysiwyg-rails"
 
 group :development do
   gem "letter_opener"

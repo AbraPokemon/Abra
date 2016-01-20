@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>KickStater</title>
+  <title>Abra</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -24,7 +24,7 @@
     </form>
     <ul class="menu text-right inline middle">
       <li class="inline top">
-        <a href="open_create_event_popup" class="button text-left main icon"><i class="fa fa-plus"></i>Create an event</a>
+        <a href="<%= new_event_path %>" class="button text-left main icon"><i class="fa fa-plus"></i>Create an event</a>
       </li>
       <li class="inline top">
         <a href="open_sign_up_popup" class="link text-left icon"><i class="fa fa-user-plus"></i>Sign up</a>
