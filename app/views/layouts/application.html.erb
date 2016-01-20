@@ -7,68 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<header>
-  <nav class="wrapper">
-    <a class="logo inline middle" href="link_to_homepage">
-      <img src="<%= image_path('logo.png') %>" alt="Logo"/>
-    </a>
-    <form class="search-form inline middle">
-      <i class="fa fa-search fa-2x inline middle"></i>
-      <input type="text" class="inline middle" placeholder="Hey! What event are you interested in?"/>
-      <select>
-        <option value="">at location</option>
-        <option value="">Distric 1</option>
-        <option value="">Distric 2</option>
-      </select>
-    </form>
-    <ul class="menu text-right inline middle">
-      <li class="inline top">
-        <a href="open_create_event_popup" class="button text-left main icon"><i class="fa fa-plus"></i>Create an event</a>
-      </li>
-      <li class="inline top">
-        <a href="open_sign_up_popup" class="link text-left icon"><i class="fa fa-user-plus"></i>Sign up</a>
-      </li>
-      <li class="inline top">
-        <a href="open_sign_in_popup" class="link text-left icon"><i class="fa fa-sign-in"></i>Sign in</a>
-      </li>
-    </ul>
-  </nav>
-</header>
-
-<%= yield %>
-
-<footer>
-  <ul class="blocks wrapper">
-    <li class="block inline top">
-      <h4>About us</h4>
-      <nav>
-        <ul class="links">
-          <li><a class="link icon" href="#"><i class="fa fa-caret-right"></i>About us</a></li>
-          <li><a class="link icon"  href="#"><i class="fa fa-caret-right"></i>Term of conditions</a></li>
-          <li><a class="link icon"  href="#"><i class="fa fa-caret-right"></i>Privacy</a></li>
-        </ul>
-      </nav>
-    </li>
-    <li class="block inline top">
-      <h4>Support</h4>
-      <nav>
-        <ul class="links">
-          <li><a class="link icon"  href="#"><i class="fa fa-caret-right"></i>How to use</a></li>
-          <li><a class="link icon"  href="#"><i class="fa fa-caret-right"></i>FAQs</a></li>
-          <li><a class="link icon"  href="#"><i class="fa fa-caret-right"></i>Contact us</a></li>
-        </ul>
-      </nav>
-    </li>
-    <li class="block inline top">
-      <h4>Love us</h4>
-
-    </li>
-  </ul>
-  <div class="info">
-    <p class="wrapper">Copyright © 2016 ALL RIGHTS RESERVED BY ABRA TEAM</p>
-  </div>
-</footer>
+  <%= render 'layouts/messages' %>
+  <%= render 'layouts/header' %>
+  <%= yield %>
+  <%= render 'layouts/footer' %>
 
 </body>
 </html>

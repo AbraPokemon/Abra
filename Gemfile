@@ -12,7 +12,14 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'omniauth'
+gem 'omniauth-facebook'
+
 gem 'font-awesome-sass'
+gem 'sidekiq'
+gem 'devise-async'
+gem 'geocoder'
+gem 'devise-async'
+gem 'sinatra', :require => nil
 
 group :development do
   gem "letter_opener"
