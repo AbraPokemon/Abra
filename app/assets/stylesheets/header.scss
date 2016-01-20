@@ -1,7 +1,7 @@
 @import "mixin";
 
 .login_dropdown{
-  position: absolute;
+  position: relative;
   .dropdown{
     display: none;
     position: absolute;
@@ -21,16 +21,13 @@
         outline: none;
         font-size: $size-text;
       }
-      .remember{
-        float: left;
-        .remember-cb{
-          width: auto;
-        }
+      .remember_me{
+        width: auto;
       }
       .btn-login{
         width: 100%;
       }
-      .btn-fb-login{
+      .login-fb{
         width: 100%;
       }
     }

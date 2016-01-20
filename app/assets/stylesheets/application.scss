@@ -15,6 +15,7 @@
  */
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "toastr.min";
 @import "mixin";
 @import "reset";
 @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300&subset=latin,vietnamese);
@@ -124,4 +125,8 @@ footer{
 
 .label-important{
   color: $color-validate-error;
+}
+
+.error{
+  border: 1px solid red !important
 }

@@ -8,10 +8,10 @@
         <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "required" %>
       </div>
       <div class="controls">
-        <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "required"%>
+        <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "required", data: { 'min-chars': 8 }%>
       </div>
       <div class="controls">
-        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Password confirmation", class: "required" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Password confirmation", class: "required", data: { 'min-chars': 8 } %>
       </div>
       <%= f.submit "Register", class: "btn-register" %>
     <% end %>

@@ -6,12 +6,19 @@
     <form class="search-form inline middle">
       <i class="fa fa-search fa-2x inline middle"></i>
       <input type="text" class="inline middle" placeholder="Hey! What event are you interested in?"/>
+      <select>
+        <option value="">at location</option>
+        <option value="">Distric 1</option>
+        <option value="">Distric 2</option>
+      </select>
     </form>
     <ul class="menu text-right inline middle">
       <li class="inline top">
         <a href="open_create_event_popup" class="button text-left main icon"><i class="fa fa-plus"></i>Create an event</a>
       </li>
-      <%= render 'users/sessions/new' %>
+      <li class="inline top">
+        <%= render 'users/sessions/new' %>
+      </li>
     </ul>
   </nav>
 </header>
