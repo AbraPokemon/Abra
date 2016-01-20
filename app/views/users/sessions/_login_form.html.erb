@@ -8,18 +8,18 @@
         <%= f.email_field :email, autofocus: true, placeholder: "Email", title: "Email", class: "required" %>
       </div>
       <div class="controls">
-        <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "required" %>
+        <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "required", data: { 'min-chars': 8 }%>
       </div>
       <% if devise_mapping.rememberable? -%>
-      <div class="remember">
-        <%= f.check_box :remember_me, class: "remember-cb" %>
-        <%= f.label :remember_me %>
-      </div>
+        <div class="controls">
+          <%= f.check_box :remember_me, class: "remember_me" %>
+          <%= f.label :remember_me %>
+        </div>
       <% end -%>
-      <%= f.submit "Log in", class: 'btn-login' %>
+      <%= f.submit "Log in", class: "btn-login" %>
       <!-- FaceBook -->
       <%= link_to user_omniauth_authorize_path(:facebook) do %>
-        <%= image_tag "facebook_login_button.png", class: "btn-fb-login" %>
+        <%= image_tag "facebook_login_button.png", class: "login-fb" %>
       <% end %>
     <% end %>
   </div>
