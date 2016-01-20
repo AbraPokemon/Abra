@@ -18,7 +18,6 @@ gem 'font-awesome-sass'
 gem 'sidekiq'
 gem 'devise-async'
 gem 'geocoder'
-gem 'devise-async'
 gem 'sinatra', :require => nil
 
 group :development do
