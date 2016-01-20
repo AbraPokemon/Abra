@@ -19,6 +19,8 @@ gem 'sidekiq'
 gem 'devise-async'
 gem 'geocoder'
 gem 'sinatra', :require => nil
+gem 'simple_form'
+gem "wysiwyg-rails"
 
 group :development do
   gem "letter_opener"
