@@ -12,6 +12,10 @@
   #{$attribute}: $value;
 }
 
+.animation{
+  @include css3-styles(transition, all 0.5s);
+}
+
 .text{
   &-center{
     text-align: center;
