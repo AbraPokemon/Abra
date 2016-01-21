@@ -1,6 +1,6 @@
 <h1>Create event</h1>
 
-<%= simple_form_for Event.new, :html => {:multipart => true}  do |f| %>
+<%= simple_form_for @event, :html => {:multipart => true}  do |f| %>
 
     <%= f.input :name, autofocus: true %>
 
