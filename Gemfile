@@ -14,7 +14,8 @@ gem 'devise'
 gem 'omniauth'
 gem 'font-awesome-sass'
 gem 'simple_form'
-gem "wysiwyg-rails"
+gem 'wysiwyg-rails'
+gem 'aws-sdk'
 
 group :development do
   gem "letter_opener"
