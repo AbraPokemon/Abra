@@ -14,7 +14,9 @@
     </form>
     <ul class="menu text-right inline middle">
       <li class="inline top">
-        <a href="open_create_event_popup" class="button text-left main icon"><i class="fa fa-plus"></i>Create an event</a>
+        <%= link_to 'Create an event', class: 'button text-left main icon' do %>
+          <i class="fa fa-plus"></i>Create an event
+        <% end %>
       </li>
       <li class="inline top">
         <%= render 'users/sessions/new' %>

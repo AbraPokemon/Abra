@@ -1,0 +1,42 @@
+<h1>Create event</h1>
+
+<%= simple_form_for Event.new, :html => {:multipart => true}  do |f| %>
+
+    <%= f.input :name, autofocus: true %>
+
+    <%= f.input :location, input_html: { id: "autocomplete" } %>
+
+    <%= f.input :thumbnail, as: :file %>
+
+    <%= f.input :start_at %>
+
+    <%= f.input :short_description, as: :text %>
+
+    <%= f.input :number_of_participant %>
+
+    <%= f.input :required_amount %>
+
+    <%= f.input :donation_due_date %>
+
+    <%= f.input :story, input_html: { id: "edit" } %>
+
+    <%= f.button :submit, "Preview" %>
+
+    <%= f.button :submit, "Create" %>
+
+<% end %>
+
+<script>
+  var autocomplete;
+
+  function initAutocomplete() {
+    autocomplete = new google.maps.places.Autocomplete(
+        (document.getElementById('autocomplete')),
+        {types: ['geocode']});
+  }
+
+  $(function() {
+    $('#edit').froalaEditor();
+  });
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkKcB2Vfei2ySQzJ17rfXX_19IGzJaxms&signed_in=true&libraries=places&callback=initAutocomplete" async defer></script>
