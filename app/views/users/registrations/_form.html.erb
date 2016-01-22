@@ -1,6 +1,6 @@
 <div class="register_dropdown">
   <div>
-    <a href="#" class="link text-left icon register_link_dropdown"><i class="fa fa-sign-in"></i>Sign Up</a>
+    <a href="#" class="link text-left icon register_link_dropdown"><i class="fa fa-sign-in"></i><%= t("authen.sign_up") %></a>
   </div>
   <div class="dropdown">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: 'register_form' } ) do |f| %>
@@ -8,12 +8,12 @@
         <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "required" %>
       </div>
       <div class="controls">
-        <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "required", data: { 'min-chars': 8 }%>
+        <%= f.password_field :password, autocomplete: "off", placeholder: "#{t("authen.form.password")}", class: "required", data: { 'min-chars': 8 }%>
       </div>
       <div class="controls">
-        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Password confirmation", class: "required", data: { 'min-chars': 8 } %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "#{t("authen.form.password_confirmation")}", class: "required", data: { 'min-chars': 8 } %>
       </div>
-      <%= f.submit "Register", class: "btn-register" %>
+      <%= f.submit "#{t("authen.form.register")}", class: "btn-register" %>
     <% end %>
   </div>
 </div>
