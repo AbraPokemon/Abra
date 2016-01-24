@@ -1,12 +1,64 @@
 <div class="special-event">
   <ul>
     <li>
-      <img src="<%= image_path('project1.jpg') %>" alt="Project 1"/>
+      <%= image_tag @event.thumbnail %>
       <div class="event-contents text-center">
-        <h3>WATER PROJECT</h3>
-        <p>100% of the money will be used to build clean water projects, and when they’re complete, charity: water will send us photos and GPS coordinates so we can see the exact community we helped.</p>
-        <a class="button icon main big text-left"><i class="fa fa-thumbs-o-up"></i>Join us</a>
+        <h3><%= @event.name %></h3>
+        <p><%= @event.short_description %>.</p>
       </div>
     </li>
   </ul>
+</div>
+
+<div id="event-detail">
+  <div id="detail-panel">
+    <div id="story">
+      <div id="tab-panel">
+        <article class="tabs">
+          <section id="tab-about">
+
+          </section>
+          <section id="tab-comments">
+            <%= render 'comments/comment_list' %>
+          </section>
+          <section id="tab-update">
+            
+          </section>
+        </article>
+      </div>
+      <hr>
+      <div id="content">
+        <%= @event.story %>
+      </div>
+    </div>
+  </div>
+  <div id="donate-panel">
+    <div id="donate">
+      <div class="money">
+        <h3>
+          525,5887 VNĐ
+        </h3>
+      </div>
+      <div id="donate-button">
+        <h3><%= t("common.donate.title") %></h3>
+        <span><%= t("common.donate.fundraise") %></span>
+      </div>
+      <div id="social">
+        <span id="fb"><i class="fa fa-facebook"></i></span>
+        <span id="twitter"><i class="fa fa-twitter"></i></span>
+        <span id="gg-plus"><i class="fa fa-google-plus"></i></span>
+      </div>
+    </div>
+    <div id="donor-list">
+      <h3><%= t("common.donors") %></h3>
+      <ul>
+        <li>
+          User1
+        </li>
+        <li>
+          User2
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

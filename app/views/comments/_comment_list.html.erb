@@ -1,0 +1,22 @@
+<ul>
+  <% @event.comments.each do |comment| %>
+    <li>
+      <div class="comment-inner">
+        <div class="avatar left">
+          <%= image_tag comment.user.avatar_url %>
+        </div>
+        <div class="main-comment">
+          <%= comment.body %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+  <% if signed_in? %>
+  <li>
+    <%= form_for [@event, Comment.new], remote: true do |f| %>
+      <%= f.text_field :body %>
+      <%= f.submit %>
+    <% end %>
+  </li>
+  <% end %>
+</ul>
