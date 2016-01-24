@@ -78,20 +78,84 @@
   }
 }
 
-#idea-blocks{
+.idea-blocks{
   width: 90%;
   margin: $size-unit-double auto;
   min-width: 1000px;
+  .list{
+    width: 646px;
+  }
+  .real-event{
+    width: 340px;
+    float: right;
+    ul{
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    li{
+      margin-top: $size-unit;
+      overflow: hidden;
+      border-top: 1px dotted $color-line;
+      padding-top: $size-unit;
+      &:first-child{
+        margin-top: 0;
+        border-top: 0;
+        padding-top: 0;
+      }
+    }
+    img{
+      width: 50px;
+      height: 50px;
+      float: left;
+      @include css3-styles(border-radius, 50px);
+    }
+    .content{
+      margin-left: 60px;
+      display: block;
+      height: 50px;
+      position: relative;
+    }
+    h4{
+      line-height: 30px;
+      a{
+        color: $color-main;
+        font-size: $size-h4;
+      }
+    }
+    a{
+      text-decoration: none;
+      color: #f15c75;
+    }
+    span{
+      position: absolute;
+      top: $size-unit;
+      right: $size-unit;
+      font-size: $size-unit;
+      color: $color-gray;
+    }
+  }
+  h3{
+    margin: 30px 0;
+    font-size: 30px;
+    font-weight: normal;
+    border-bottom: 1px solid $color-sub1;
+    padding-bottom: $size-unit;
+  }
   .block{
     width: 200px;
     height: 400px;
     border: 1px solid $color-line;
     box-sizing: border-box;
     margin: 0 $size-unit-double $size-unit-double 0;
-    border-radius: 5px;
+    border-radius: $size-unit-half;
     overflow: hidden;
     background: $color-text2;
+    position: relative;
     @include css3-styles(border-radius, $size-unit-half);
+    &:nth-of-type(3n){
+      margin: 0;
+    }
     img{
       width:100%;
       height: 133px;
@@ -240,4 +304,61 @@
   }
 }
 
+.idea-near-me{
+  h3{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: normal;
+    border-bottom: 1px solid $color-sub1;
+    padding-bottom: $size-unit;
+  }
+  .idea-map{
+    width: 100%;
+    display: block;
+    height: 400px;
+  }
+}
 
+.summary{
+  text-align: center;
+  padding: 40px 0;
+  ul{
+    list-style: none;
+    padding: 0;
+  }
+  li{
+    border-left:1px dotted $color-line;
+    padding: 0 40px;
+    &:first-child{
+      border-left: none;
+    }
+  }
+  h4{
+    font-size: 40px;
+    line-height: 50px;
+    margin: 0;
+    padding: 0;
+    color: $color-sub1;
+  }
+  span{
+    display: block;
+  }
+}
+
+.quotes{
+  h3{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: normal;
+    border-bottom: 1px solid $color-sub1;
+    padding-bottom: $size-unit;
+  }
+  ul{
+    list-style: none;
+    padding: 0;
+  }
+  li{
+  }
+}
