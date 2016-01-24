@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :get_event, only: [:show, :edit]
+
   def index
   end
 
@@ -32,6 +34,9 @@ class EventsController < ApplicationController
   end
 
   private
+  def get_event
+    @event = Event.find(params[:id])
+  end
 
   def event_params
     params.require(:event).permit(:name, :location, :start_at, :short_description, :number_of_participant, :required_amount, :donation_due_date, :story)

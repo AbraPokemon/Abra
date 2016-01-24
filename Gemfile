@@ -22,6 +22,7 @@ gem 'sinatra', :require => nil
 gem 'simple_form'
 gem 'wysiwyg-rails'
 gem 'aws-sdk'
+gem 'pundit'
 
 group :development do
   gem "letter_opener"

@@ -9,3 +9,10 @@ en:
       register: "Register"
       remember: "Remember me"
       login: "Login"
+  common:
+    donate:
+      title: "DONATE"
+      fundraise: "TO THIS EVENT"
+    donors: "DONORS"
+  notify:
+    error_create: "Can not create %{class}"
