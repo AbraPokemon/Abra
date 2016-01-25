@@ -1,0 +1,7 @@
+<%= @event.reload.vote_count %> votes
+<br>
+<% if @event.voted_by?(current_user) %>
+  <%= link_to 'unvote', unvote_event_votes_path(@event), method: :put, remote: true %>
+<% else %>
+  <%= link_to 'vote', vote_event_votes_path(@event), method: :put, remote: true %>
+<% end %>
