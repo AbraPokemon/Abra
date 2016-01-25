@@ -1,0 +1,16 @@
+vi:
+  authen:
+    sign_up: "Đăng ký"
+    sign_in: "Đăng nhập"
+    sign_out: "Đăng xuất"
+    form:
+      password: "Mật khẩu"
+      password_confirmation: "Mật khẩu xác nhận"
+      register: "Đăng ký"
+      remember: "Nhớ tài khoản"
+      login: "Đăng nhập"
+  common:
+    donate:
+      title: "ỦNG HỘ"
+      fundraise: "cho sự kiện này"
+    donors: "Danh sách người ủng hộ"
