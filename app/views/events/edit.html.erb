@@ -1,38 +1,73 @@
-<h1>Create event</h1>
+<h1>Chỉnh sửa sự kiện</h1>
 
 <%= simple_form_for @event, :html => {:multipart => true}  do |f| %>
 
-    <%= f.input :name, autofocus: true %>
+    <%= f.input :name, :label => "Tên sự kiện", autofocus: true %>
 
-    <%= f.input :location, input_html: { id: "autocomplete" } %>
+    <%= f.input :category_id, :label => "Thể loại", collection: @categories %>
 
-    <%= f.input :thumbnail, as: :file %>
+    <%= f.input :location, :label => "Địa điểm", input_html: { id: "autocomplete" } %>
 
-    <%= f.input :start_at %>
+    <%= f.input :city, :as => :hidden, input_html: { id: "city" }  %>
 
-    <%= f.input :short_description, as: :text %>
+    <%= f.input :lat, :as => :hidden, input_html: { id: "lat" }  %>
 
-    <%= f.input :number_of_participant %>
+    <%= f.input :lng, :as => :hidden, input_html: { id: "lng" }  %>
 
-    <%= f.input :required_amount %>
+    <%= f.input :thumbnail, :label => "Hình ảnh", as: :file %>
 
-    <%= f.input :donation_due_date %>
+    <%= f.input :start_at, :label => "Thời gian bắt đầu" %>
 
-    <%= f.input :story, input_html: { id: "edit" } %>
+    <%= f.input :short_description, :label => "Giới thiệu", as: :text %>
 
-    <%= f.button :submit, "Preview" %>
+    <%= f.input :number_of_participant, :label => "Số lượng người tham gia" %>
 
-    <%= f.button :submit, "Create" %>
+    <%= f.input :required_amount, :label => "Số tiền cần giúp đỡ" %>
+
+    <%= f.input :donation_due_date, :label => "Ngày hết hạn ủng hộ" %>
+
+    <%= f.input :story, :label => "Câu chuyện của bạn", input_html: { id: "edit" } %>
+
+    <%= f.button :submit, "Xem Trước" %>
+
+    <%= f.button :submit, "Cập nhập" %>
 
 <% end %>
 
 <script>
-  var autocomplete;
+  var placeSearch, autocomplete;
 
   function initAutocomplete() {
+    input = document.getElementById('autocomplete');
+    google.maps.event.addDomListener(input, 'keydown', function(e) {
+      if (e.keyCode == 13) {
+          e.preventDefault();
+      }
+    });
+
     autocomplete = new google.maps.places.Autocomplete(
-        (document.getElementById('autocomplete')),
-        {types: ['geocode']});
+      (input),
+      {types: ['geocode']}
+    );
+
+    autocomplete.addListener('place_changed', function(e) {
+      place = autocomplete.getPlace();
+
+      cityInput = document.getElementById('city');
+      latInput = document.getElementById('lat');
+      longInput = document.getElementById('lng');
+
+      for (var i = 0; i < place.address_components.length; i++) {
+        var addressType = place.address_components[i].types[0];
+        if (addressType == 'administrative_area_level_1') {
+          cityInput.value = place.address_components[i]['long_name'];
+          break;
+        }
+      }
+
+      latInput.value = place.geometry.location.lat();
+      longInput.value = place.geometry.location.lng();
+    });
   }
 
   $(function() {

@@ -1,8 +1,11 @@
 class EventsController < ApplicationController
+  before_action :load_categories, only: [:new, :edit]
+
   def index
   end
 
   def new
+    @event = Event.new
   end
 
   def create
@@ -14,10 +17,10 @@ class EventsController < ApplicationController
       acl: 'public-read'
     })
 
-    @event.thumbnail = obj.public_url
+    @event.thumbnail_url = obj.public_url
 
     if @event.save
-      redirect_to events_path
+      render 'show'
     else
       render 'new'
     end
@@ -25,12 +28,25 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
-    render 'edit'
+    if @user.update_attributes(event_params)
+      render 'show'
+    else
+      render 'edit'
+    end
+  end
+
+  def show
+    @event = Event.find(params[:id])
+    render 'show'
   end
 
   private
 
   def event_params
-    params.require(:event).permit(:name, :location, :start_at, :short_description, :number_of_participant, :required_amount, :donation_due_date, :story)
+    params.require(:event).permit(:name, :category_id, :location, :city, :lat, :lng, :start_at, :short_description, :number_of_participant, :required_amount, :donation_due_date, :story)
+  end
+
+  def load_categories
+    @categories = Category.all_enable
   end
 end

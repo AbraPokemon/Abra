@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160121071947) do
+ActiveRecord::Schema.define(version: 20160125083926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "image_url"
+    t.boolean  "enable",     default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.integer  "event_id"
@@ -49,12 +57,28 @@ ActiveRecord::Schema.define(version: 20160121071947) do
     t.decimal  "required_amount"
     t.datetime "donation_due_date"
     t.integer  "user_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.string   "thumbnail"
+    t.datetime "created_at",                                                     null: false
+    t.datetime "updated_at",                                                     null: false
+    t.string   "thumbnail_url"
+    t.string   "city"
+    t.decimal  "lat",                   precision: 10, scale: 6
+    t.decimal  "lng",                   precision: 10, scale: 6
+    t.boolean  "enable",                                         default: false
+    t.integer  "category_id"
   end
 
+  add_index "events", ["category_id"], name: "index_events_on_category_id", using: :btree
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
+
+  create_table "participations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "participations", ["event_id"], name: "index_participations_on_event_id", using: :btree
+  add_index "participations", ["user_id"], name: "index_participations_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "full_name"
@@ -104,5 +128,8 @@ ActiveRecord::Schema.define(version: 20160121071947) do
 
   add_foreign_key "comments", "events"
   add_foreign_key "comments", "users"
+  add_foreign_key "events", "categories"
   add_foreign_key "events", "users"
+  add_foreign_key "participations", "events"
+  add_foreign_key "participations", "users"
 end

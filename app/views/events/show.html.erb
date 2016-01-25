@@ -1,1 +1,17 @@
-<%= image_tag(@event.thumbnail_url) if @event.thumbnail.present? %>
+<%= image_tag(@event.thumbnail_url) if @event.thumbnail_url.present? %>
+
+<h1><%= @event.name %></h1>
+
+<p>Thể loại: <%= @event.category.name %></p>
+
+<p>Thời gian bắt đầu: <%= @event.start_at %></p>
+
+<p>Số người tham gia: <%= @event.participants.size %>/<%= @event.number_of_participant %></p>
+
+<p>Số tiền cần giúp đỡ: <%= @event.required_amount %></p>
+
+<p>Ngày hết hạn ủng hộ: <%= @event.donation_due_date %></p>
+
+<p>Giới thiệu: <%= @event.short_description %></p>
+
+<div><%= @event.story.html_safe %></div>
