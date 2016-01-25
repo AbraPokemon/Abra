@@ -16,3 +16,8 @@ en:
     donors: "DONORS"
   notify:
     error_create: "Can not create %{class}"
+  date:
+    order:
+      - :day
+      - :month
+      - :year

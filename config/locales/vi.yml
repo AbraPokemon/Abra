@@ -14,3 +14,8 @@ vi:
       title: "ỦNG HỘ"
       fundraise: "cho sự kiện này"
     donors: "Danh sách người ủng hộ"
+  date:
+    order:
+      - :day
+      - :month
+      - :year

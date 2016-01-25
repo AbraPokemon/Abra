@@ -1,5 +1,11 @@
 User.destroy_all
 Event.destroy_all
+Category.destroy_all
+
+category_education =  Category.create(name: 'Khuyến học', image_url: 'http://placehold.it/150x150.png/000', enable: true);
+category_animal =  Category.create(name: 'Bảo tồn động vật', image_url: 'http://placehold.it/150x150.png/000', enable: true);
+category_social =  Category.create(name: 'Xã hội', image_url: 'http://placehold.it/150x150.png/000', enable: true);
+category_environment =  Category.create(name: 'Môi trường', image_url: 'http://placehold.it/150x150.png/000', enable: true);
 
 user = User.create(
   email: 'abra@abra.com',
@@ -31,7 +37,9 @@ Cập nhật: Đến ngày  05/01/2016, Dự án trợ giúp y tế của Quỹ 
   number_of_participant: "",
   required_amount: "20000000",
   donation_due_date: 4.days.from_now,
-  thumbnail: "https://richardhutton.files.wordpress.com/2015/07/charity_20cm.jpg"
+  thumbnail_url: "https://richardhutton.files.wordpress.com/2015/07/charity_20cm.jpg",
+  category: category_social,
+  user: user
 )
 
 p "create event[name: #{event.name}]"
