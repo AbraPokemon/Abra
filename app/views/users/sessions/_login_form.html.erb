@@ -2,24 +2,28 @@
   <div>
     <a href="#" class="link text-left icon link_dropdown"><i class="fa fa-sign-in"></i>Sign in</a>
   </div>
-  <div class="dropdown">
+  <div class="popup login" id="login_dialog">
+    <h3>Welcome back</h3>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { id: 'login_form' }) do |f| %>
       <div class="controls">
+        <i class="fa fa-user"></i>
         <%= f.email_field :email, autofocus: true, placeholder: "Email", title: "Email", class: "required" %>
       </div>
       <div class="controls">
+        <i class="fa fa-lock"></i>
         <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "required", data: { 'min-chars': 8 }%>
       </div>
       <% if devise_mapping.rememberable? -%>
-        <div class="controls">
+        <div class="checkbox">
           <%= f.check_box :remember_me, class: "remember_me" %>
           <%= f.label :remember_me %>
         </div>
       <% end -%>
-      <%= f.submit "Log in", class: "btn-login" %>
+      <%= f.submit "Log in", class: "button main" %>
+      <p>You have facebook account already?</p>
       <!-- FaceBook -->
-      <%= link_to user_omniauth_authorize_path(:facebook) do %>
-        <%= image_tag "facebook_login_button.png", class: "login-fb" %>
+      <%= link_to user_omniauth_authorize_path(:facebook), class:"button facebook icon" do %>
+        <i class="fa fa-facebook"></i> Login with your Facebook
       <% end %>
     <% end %>
   </div>
