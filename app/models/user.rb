@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :donations, as: :donor
   has_many :votes, as: :voter
   has_many :comments
+  has_many :participations
+  has_many :participate_events, through: :participations, source: :user
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
