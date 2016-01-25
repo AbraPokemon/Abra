@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :get_event, only: [:show, :edit]
   before_action :load_categories, only: [:new, :edit]
+  before_action :get_event, only: [:edit, :show, :update]
 
   def index
   end
@@ -13,28 +14,33 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new event_params
-    @event.user = current_user
-    thumbnail_file_path = 'abra/event/thumbnail/' + Time.now.strftime("%Y/%m/%d/") + SecureRandom.hex(13) + File.extname(params[:event][:thumbnail].original_filename)
+    event = Event.new event_params
+    event.user = current_user
+    thumbnail_file_path = "abra/event/thumbnail/#{Time.now.strftime("%Y/%m/%d/")}#{SecureRandom.hex(13)}#{File.extname(params[:event][:thumbnail].original_filename)}"
     obj = S3_BUCKET.object(thumbnail_file_path)
     obj.upload_file(params[:event][:thumbnail].tempfile, {
       acl: 'public-read'
     })
 
-    @event.thumbnail_url = obj.public_url
+    event.thumbnail_url = obj.public_url
 
-    if @event.save
-      render 'show'
+    if event.save
+      redirect_to event
     else
-      render 'new'
+      render 'new'  
     end
   end
 
   def edit
     @event = Event.find(params[:id])
-    if @user.update_attributes(event_params)
-      render 'show'
+  end
+
+  def update
+    if @event.update_attributes(event_params)
+      flash[:success] = "Update event successfully"
+      redirect_to @event
     else
+      flash[:error] = @event.errors.full_messages.to_sentence
       render 'edit'
     end
   end
@@ -50,5 +56,9 @@ class EventsController < ApplicationController
 
   def load_categories
     @categories = Category.all_enable
+  end
+
+  def get_event
+    @event = Event.find(params[:id])
   end
 end

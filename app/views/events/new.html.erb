@@ -1,38 +1,6 @@
 <h1>Tạo sự kiện</h1>
 
-<%= simple_form_for @event, :html => {:multipart => true}  do |f| %>
-
-    <%= f.input :name, :label => "Tên sự kiện", autofocus: true %>
-
-    <%= f.input :category_id, :label => "Thể loại", collection: @categories %>
-
-    <%= f.input :location, :label => "Địa điểm", input_html: { id: "autocomplete", onFocus: "geolocate()" } %>
-
-    <%= f.input :city, :as => :hidden, input_html: { id: "city" }  %>
-
-    <%= f.input :lat, :as => :hidden, input_html: { id: "lat" }  %>
-
-    <%= f.input :lng, :as => :hidden, input_html: { id: "lng" }  %>
-
-    <%= f.input :thumbnail, :label => "Hình ảnh", as: :file %>
-
-    <%= f.input :start_at, :label => "Thời gian bắt đầu" %>
-
-    <%= f.input :short_description, :label => "Giới thiệu", as: :text %>
-
-    <%= f.input :number_of_participant, :label => "Số lượng người tham gia" %>
-
-    <%= f.input :required_amount, :label => "Số tiền cần giúp đỡ" %>
-
-    <%= f.input :donation_due_date, :label => "Ngày hết hạn ủng hộ" %>
-
-    <%= f.input :story, :label => "Câu chuyện của bạn", input_html: { id: "edit" } %>
-
-    <%= f.button :submit, "Xem Trước" %>
-
-    <%= f.button :submit, "Tạo" %>
-
-<% end %>
+<%= render 'form' %>
 
 <script>
   function initAutocomplete() {

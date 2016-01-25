@@ -8,6 +8,8 @@ class Event < ActiveRecord::Base
   has_many :participations
   has_many :participants, through: :participations, source: :event
 
+  validates :category, presence: true
+
   def vote_by!(user)
     # create a new vote associating user and photo
     raise "Already voted" if voted_by?(user)
