@@ -12,5 +12,11 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :comments
+    resources :votes, only: [] do
+      collection do
+        put :vote
+        put :unvote
+      end
+    end
   end
 end
