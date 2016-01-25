@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :load_categories, only: [:new, :edit]
   before_action :get_event, only: [:edit, :show, :update]
 
@@ -26,12 +27,11 @@ class EventsController < ApplicationController
     if event.save
       redirect_to event_path(event)
     else
-      render 'new'  
+      render 'new'
     end
   end
 
   def edit
-    @event = Event.find(params[:id])
   end
 
   def update
@@ -58,9 +58,5 @@ class EventsController < ApplicationController
 
   def load_categories
     @categories = Category.all_enable
-  end
-
-  def get_event
-    @event = Event.find(params[:id])
   end
 end
