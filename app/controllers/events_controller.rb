@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-  before_action :get_event, only: [:show, :edit]
   before_action :load_categories, only: [:new, :edit]
   before_action :get_event, only: [:edit, :show, :update]
 
@@ -14,7 +13,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    debugger
     event = Event.new event_params
     event.user = current_user
     thumbnail_file_path = "abra/event/thumbnail/#{Time.now.strftime("%Y/%m/%d/")}#{SecureRandom.hex(13)}#{File.extname(params[:event][:thumbnail_url].original_filename)}"
