@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :get_event, only: [:create]
+  respond_to :html, :json, :js
 
   def show
   end
@@ -11,7 +12,6 @@ class CommentsController < ApplicationController
 
   private
   def get_event
-    debugger
     @event = Event.find(params[:event_id])
   end
 

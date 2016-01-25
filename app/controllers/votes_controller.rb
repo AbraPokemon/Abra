@@ -4,6 +4,10 @@ class VotesController < ApplicationController
 
   def vote
     @event.vote_by!(current_user)
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def unvote
@@ -12,6 +16,6 @@ class VotesController < ApplicationController
 
   private
   def get_event
-    @event = Event.find(parmas[:event_id])
+    @event = Event.find(params[:event_id])
   end
 end
