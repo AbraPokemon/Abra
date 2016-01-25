@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :get_event, only: [:create]
   respond_to :html, :json, :js
 
