@@ -53,7 +53,7 @@ class EventsController < ApplicationController
   end
 
   def get_event
-    @event = Event.find(params[:id])
+    @event = Event.enable.find(params[:id])
   end
 
   def load_categories

@@ -1,12 +1,14 @@
 <div class="special-event">
   <ul>
     <li>
-      <img src="<%= image_path('project1.jpg') %>" alt="Project 1"/>
-      <div class="event-contents text-center">
-        <h3><%= @hotEvent.name %></h3>
-        <p><%= @hotEvent.short_description %></p>
-        <a class="button icon main big text-left" href=<%= event_path(@hotEvent) %>><i class="fa fa-thumbs-o-up"></i>Join us</a>
-      </div>
+      <% if @hotEvent %>
+        <img src="<%= image_path('project1.jpg') %>" alt="Project 1"/>
+        <div class="event-contents text-center">
+          <h3><%= @hotEvent.name %></h3>
+          <p><%= @hotEvent.short_description %></p>
+          <a class="button icon main big text-left" href=<%= event_path(@hotEvent) %>><i class="fa fa-thumbs-o-up"></i>Join us</a>
+        </div>
+      <% end %>
     </li>
   </ul>
 </div>
@@ -20,17 +22,17 @@
         <a class="button animation main" href=<%= event_path(e) %>>View idea</a>
         <h4><%= e.name %></h4>
         <p><%= e.short_description %></p>
-        <a class="love-us" href="#">xx.xxx <i class="fa fa-heart"></i></a>
+        <a class="love-us" href="#"><%= e.votes.size %> <i class="fa fa-heart"></i></a>
         <ul class="more">
           <li><i class="fa fa-user"></i>Author: <strong><%= e.user.full_name %></strong></li>
           <li><i class="fa fa-map-marker"></i>Location: <strong><%= e.location %></strong></li>
           <li><i class="fa fa-calendar"></i>Expired at: <strong><%= e.donation_due_date.strftime("%d/%m/%Y") %></strong></li>
         </ul>
         <div class="progress-bar">
-          <div class="bar animation" style="width:75%;"></div>
-          <span class="percent">xx %</span>
-          <span class="backer"><strong>xxx</strong>BACKERS</span>
-          <span class="raised"><strong>xx,xx,xxx VND</strong>RAISED</span>
+          <div class="bar animation" style="width:<%= (e.donations.sum(:amount) / e.required_amount)*100 %>%;"></div>
+          <span class="percent"><%= (e.donations.sum(:amount) / e.required_amount).round(2) *100 %>%</span>
+          <span class="backer"><strong><%= e.donations.size %></strong>BACKERS</span>
+          <span class="raised"><strong><%= e.donations.sum(:amount) %> VND</strong>RAISED</span>
         </div>
       </div>  
     <% end %>
@@ -128,8 +130,6 @@
     </li>
   </ul>
 </div>
-
-
 
 <script>
   // In the following example, markers appear when the user clicks on the map.

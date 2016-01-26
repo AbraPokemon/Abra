@@ -19,3 +19,6 @@ vi:
       - :day
       - :month
       - :year
+  time:
+    formats:
+      long: "%Y-%m-%d %H:%M:%S"

@@ -23,6 +23,8 @@ gem 'simple_form'
 gem 'wysiwyg-rails'
 gem 'aws-sdk'
 gem 'pundit'
+gem 'stripe'
+gem 'activeadmin', '~> 1.0.0.pre2'
 
 group :development do
   gem "letter_opener"
