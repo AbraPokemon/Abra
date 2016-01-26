@@ -43,3 +43,11 @@ Cập nhật: Đến ngày  05/01/2016, Dự án trợ giúp y tế của Quỹ 
 )
 
 p "create event[name: #{event.name}]"
+
+donate = Donation.create(
+  donatable_id: 1,
+  donatable_type: "Event",
+  donor_id: 1,
+  donor_type: "User"
+)
+
