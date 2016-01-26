@@ -3,9 +3,9 @@
     <li>
       <img src="<%= image_path('project1.jpg') %>" alt="Project 1"/>
       <div class="event-contents text-center">
-        <h3>WATER PROJECT</h3>
-        <p>100% of the money will be used to build clean water projects, and when they’re complete, charity: water will send us photos and GPS coordinates so we can see the exact community we helped.</p>
-        <a class="button icon main big text-left"><i class="fa fa-thumbs-o-up"></i>Join us</a>
+        <h3><%= @hotEvent.name %></h3>
+        <p><%= @hotEvent.short_description %></p>
+        <a class="button icon main big text-left" href=<%= event_path(@hotEvent) %>><i class="fa fa-thumbs-o-up"></i>Join us</a>
       </div>
     </li>
   </ul>
