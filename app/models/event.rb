@@ -11,6 +11,7 @@ class Event < ActiveRecord::Base
   validates :category, presence: true
 
   scope :enable, -> { where(enable: true) }
+  scope :featured, -> { enable.joins(:votes).group("events.id").order('count(events.id) DESC') }
 
   def vote_by!(user)
     # create a new vote associating user and photo

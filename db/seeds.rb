@@ -19,14 +19,34 @@ user = User.create(
   website: "www.abracharity.com",
   confirmed_at: Time.current
 )
-p "Create User[email: #{user.email}, password: #{user.password}]"
 
-donate = Donation.create(
-  donatable_id: 1,
-  donatable_type: "Event",
-  donor_id: 1,
-  donor_type: "User"
+another_user = User.create(
+  email: 'abra1@abra.com',
+  password: '12345678',
+  full_name: 'AbraUser1',
+  avatar_url: "https://robohash.org/sitsequiquia.png?size=300x300",
+  bio: "A fancy User",
+  location: "Ho Chi Minh",
+  website: "www.abracharity.com",
+  confirmed_at: Time.current
 )
+
+p "Create User[email: #{user.email}, password: #{user.password}]"
+user_admin = User.create(
+  email: 'admin@abra.com',
+  password: '12345678',
+  full_name: 'AbraAdmin',
+  confirmed_at: Time.current,
+  admin: true
+)
+
+IMAGE_URLS = [ 
+  'https://platoshrugs.files.wordpress.com/2015/09/charity.jpg',
+  'http://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2014/12/12/102264730-charity.1910x1000.jpg',
+  'http://donandmerit.com/wp-content/uploads/2013/11/170742v2.jpg',
+  'https://richardhutton.files.wordpress.com/2015/07/charity_20cm.jpg',
+  'http://www.greenbuildingpress.co.uk/images/articles/large/Dogs.jpg'
+]
 
 (1..50).each do |i| 
   event = Event.create(
@@ -40,10 +60,20 @@ donate = Donation.create(
     story: Faker::Lorem.paragraphs.join("\n"),
     number_of_participant: "",
     required_amount: Faker::Number.between(1000000, 10000000),
-    thumbnail_url: "https://richardhutton.files.wordpress.com/2015/07/charity_20cm.jpg",
+    thumbnail_url: IMAGE_URLS.sample,
     category: Category.all.sample,
+    enable: true,
     user: user
+  )
+  donate = Donation.create(
+    donatable: event,
+    donor: another_user,
+    amount: Faker::Number.number(6)
+  )
+  vote = Vote.create(
+    votable: event,
+    voter: another_user
   )
 end
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+
