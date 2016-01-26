@@ -33,13 +33,13 @@ group :development, :test do
   gem 'web-console'
   gem 'spring'
   gem 'rspec-rails'
+  gem 'faker'
 end
 
 group :test do
 
   gem 'shoulda-matchers'
   gem 'factory_girl'
-  gem 'faker'
   gem 'database_cleaner'
   gem 'coveralls', require: false
 end

@@ -51,3 +51,19 @@ donate = Donation.create(
   donor_type: "User"
 )
 
+(1..50).each do |i| 
+  Event.create(
+    name: Faker::Lorem.words(4).join(" "),
+    location: Faker::Lorem.sentence,
+    start_at: Faker::Date.between(5.days.ago, Date.today),
+    donation_due_date: Faker::Date.between(Date.today, 10.days.from_now),
+    short_description: Faker::Lorem.paragraph,
+    story: Faker::Lorem.paragraphs.join("\n"),
+    number_of_participant: "",
+    required_amount: Faker::Number.between(1000000, 10000000),
+    thumbnail_url: "https://richardhutton.files.wordpress.com/2015/07/charity_20cm.jpg",
+    category_id: Faker::Number.between(1, 4),
+    user: user
+  )
+end
+
