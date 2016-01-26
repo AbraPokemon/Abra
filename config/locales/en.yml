@@ -21,3 +21,10 @@
 
 en:
   hello: "Hello world"
+  event_mailer:
+    donate_successful:
+      subject: "Donate successful"
+    event_created:
+      subject: "Your event have been created"
+    event_completed_survey:
+      subject: "Give feedback to your donated event" 
