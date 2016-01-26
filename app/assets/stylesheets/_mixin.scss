@@ -42,7 +42,18 @@
   padding: $size-unit;
   text-decoration: none;
   cursor: pointer;
+  outline: none;
+  border: none;
   @include css3-styles(border-radius, $size-unit-half);
+  &.facebook{
+    background-color: #3b5998;
+    color: $color-text2;
+    display: block;
+    box-sizing: border-box;
+    &:hover{
+      background-color: lighten(#3b5998, 10%);
+    }
+  }
   &.main{
     background-color: $color-sub1;
     color: $color-text2;
@@ -78,5 +89,79 @@
   }
   &:hover{
     text-decoration: underline;
+  }
+}
+
+.popup{
+  position: fixed;
+  display: none;
+  background: $color-text2;
+  opacity: 0;
+  top: 50%;
+  left: 50%;
+  z-index: 101;
+  width: 300px;
+  box-sizing: border-box;
+  margin-left: -150px;
+  padding: $size-unit-double;
+  border-top: $size-unit-double solid $color-sub1;
+  @include css3-styles(border-radius, $size-unit);
+  &.login{
+    height: 390px;
+    margin-top: -195px;
+  }
+  &.signup{
+    border-top: $size-unit-double solid $color-main;
+    height: 328px;
+    margin-top: -164px;
+  }
+  h3{
+    font-size: $size-text-medium;
+    text-align: center;
+  }
+  .controls{
+    border: 1px solid #ccc;
+    padding: $size-unit;
+    background-color: $color-text2;
+    margin-top: $size-unit-double;
+    position: relative;
+    @include css3-styles(border-radius, $size-unit-half);
+    i{
+      font-size: $size-unit-double;
+      width: $size-unit-double;
+      vertical-align: middle;
+    }
+    input{
+      border: none;
+      outline: none;
+      width: calc(100% - 25px);
+      display: inline-block;
+      vertical-align: middle;
+      font-size: $size-text;
+      &.error{
+        border-bottom: 1px solid $color-validate-error;
+      }
+    }
+    .input-error{
+      position: absolute;
+      display: block;
+      color: $color-validate-error;
+      top: 13px;
+      right: 10px;
+      background-color: $color-text2;
+      padding-left: $size-unit-half;
+    }
+  }
+  .checkbox, p{
+    margin: $size-unit-double 0 0 0;
+  }
+  .button{
+    width: 100%;
+    font-size: $size-text;
+    text-align: center;
+    margin-top: $size-unit-double;
+  }
+  p{
+    text-align: center;
   }
 }

@@ -1,0 +1,89 @@
+<%= simple_form_for @event, :html => {:multipart => true}  do |f| %>
+
+    <%= f.input :name, :label => "Tên sự kiện", autofocus: true %>
+
+    <%= f.input :category_id, :label => "Thể loại", collection: @categories %>
+
+    <%= f.input :location, :label => "Địa điểm", input_html: { id: "autocomplete", onFocus: "geolocate()" } %>
+
+    <%= f.input :city, :as => :hidden, input_html: { id: "city" }  %>
+
+    <%= f.input :lat, :as => :hidden, input_html: { id: "lat" }  %>
+
+    <%= f.input :lng, :as => :hidden, input_html: { id: "lng" }  %>
+
+    <%= f.input :thumbnail_url, :label => "Hình ảnh", as: :file %>
+
+    <%= f.input :start_at, :label => "Thời gian bắt đầu" %>
+
+    <%= f.input :short_description, :label => "Giới thiệu", as: :text %>
+
+    <%= f.input :number_of_participant, :label => "Số lượng người tham gia" %>
+
+    <%= f.input :required_amount, :label => "Số tiền cần giúp đỡ" %>
+
+    <%= f.input :donation_due_date, :label => "Ngày hết hạn ủng hộ" %>
+
+    <%= f.input :story, :label => "Câu chuyện của bạn", input_html: { id: "edit" } %>
+
+    <%= f.button :submit, "Xem Trước" %>
+
+    <%= f.button :submit %>
+
+<% end %>
+
+<script>
+  function initAutocomplete() {
+    input = document.getElementById('autocomplete');
+    google.maps.event.addDomListener(input, 'keydown', function(e) {
+      if (e.keyCode == 13) {
+          e.preventDefault();
+      }
+    });
+
+    autocomplete = new google.maps.places.Autocomplete(
+      (input),
+      {types: ['geocode']}
+    );
+
+    autocomplete.addListener('place_changed', function(e) {
+      place = autocomplete.getPlace();
+
+      cityInput = document.getElementById('city');
+      latInput = document.getElementById('lat');
+      longInput = document.getElementById('lng');
+
+      for (var i = 0; i < place.address_components.length; i++) {
+        var addressType = place.address_components[i].types[0];
+        if (addressType == 'administrative_area_level_1') {
+          cityInput.value = place.address_components[i]['long_name'];
+          break;
+        }
+      }
+
+      latInput.value = place.geometry.location.lat();
+      longInput.value = place.geometry.location.lng();
+    });
+  }
+
+  function geolocate() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var geolocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        var circle = new google.maps.Circle({
+          center: geolocation,
+          radius: position.coords.accuracy
+        });
+        autocomplete.setBounds(circle.getBounds());
+      });
+    }
+  }
+
+  $(function() {
+    $('#edit').froalaEditor();
+  });
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkKcB2Vfei2ySQzJ17rfXX_19IGzJaxms&signed_in=true&libraries=places&callback=initAutocomplete" async defer></script>
