@@ -1,22 +1,26 @@
+<% if signed_in? %>
+  <%= form_for [@event, Comment.new], remote: true do |f| %>
+    <%= f.text_area :body, class: "inline top", placeholder: "Viết bình luận của bạn ..." %>
+    <%= f.submit "Viết bình luận", class: "inline top button main" %>
+  <% end %>
+<% end %>
 <ul>
   <% @event.comments.each do |comment| %>
     <li>
       <div class="comment-inner">
-        <div class="avatar left">
-          <%= image_tag comment.user.avatar_url %>
+        <div class="avatar">
+          <% if comment.user.avatar_url? %>
+            <%= image_tag comment.user.avatar_url %>
+          <% else %>
+            <i class="fa fa-user-secret"></i>
+          <% end %>
         </div>
         <div class="main-comment">
-          <%= comment.body %>
+          <h4>Tran Van A</h4>
+          <p><%= comment.body %></p>
+          <span>29 phút </span>
         </div>
       </div>
     </li>
-  <% end %>
-  <% if signed_in? %>
-  <li>
-    <%= form_for [@event, Comment.new], remote: true do |f| %>
-      <%= f.text_field :body %>
-      <%= f.submit %>
-    <% end %>
-  </li>
   <% end %>
 </ul>

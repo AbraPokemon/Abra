@@ -54,6 +54,22 @@
       background-color: lighten(#3b5998, 10%);
     }
   }
+  &.twitter{
+    background-color: $color-twitter;
+    color: $color-text2;
+    display: block;
+    box-sizing: border-box;
+    &:hover{
+      background-color: lighten($color-twitter, 10%);
+    }
+  }
+  &.sub{
+    background-color: $color-text1;
+    color: $color-text2;
+    &:hover{
+      background-color: lighten($color-text1, 10%);
+    }
+  }
   &.main{
     background-color: $color-sub1;
     color: $color-text2;

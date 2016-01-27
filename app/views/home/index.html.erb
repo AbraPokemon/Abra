@@ -34,7 +34,7 @@
           <span class="backer"><strong><%= e.donations.size %></strong>BACKERS</span>
           <span class="raised"><strong><%= e.donations.sum(:amount) %> VND</strong>RAISED</span>
         </div>
-      </div>  
+      </div>
     <% end %>
   </div>
 
@@ -87,6 +87,7 @@
   var bangalore = { lat: 12.97, lng: 77.59 };
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
+    scrollwheel: false,
     center: bangalore
   });
 
