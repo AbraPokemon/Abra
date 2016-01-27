@@ -6,6 +6,8 @@ category_animal =  Category.create(name: 'Bảo tồn động vật', image_url:
 category_social =  Category.create(name: 'Xã hội', image_url: 'http://placehold.it/150x150.png/000', enable: true);
 category_environment =  Category.create(name: 'Môi trường', image_url: 'http://placehold.it/150x150.png/000', enable: true);
 
+RANDOM_POSTION = [ [10.814731, 106.711331], [10.804569, 106.669021], [10.779089, 106.692624], [10.804478, 106.716622]]
+
 user = User.create(
   email: 'abra@abra.com',
   password: '12345678',
@@ -45,12 +47,120 @@ IMAGE_URLS = [
   'http://www.greenbuildingpress.co.uk/images/articles/large/Dogs.jpg'
 ]
 
-(1..50).each do |i| 
+event1 = Event.create(
+  name: Faker::Lorem.words(4).join(" "),
+  latitude: RANDOM_POSTION[1][0],
+  longitude: RANDOM_POSTION[1][1],
+  start_at: Faker::Date.between(5.days.ago, Date.today),
+  donation_due_date: Faker::Date.between(Date.today, 10.days.from_now),
+  short_description: Faker::Lorem.paragraph,
+  story: Faker::Lorem.paragraphs.join("\n"),
+  number_of_participant: "",
+  required_amount: Faker::Number.between(1000000, 10000000),
+  thumbnail_url: IMAGE_URLS.sample,
+  category: Category.all.sample,
+  enable: true,
+  user: user
+)
+if event1.enable
+  donate = Donation.create(
+    donatable: event1,
+    donor: another_user,
+    amount: Faker::Number.number(6)
+  )
+  vote = Vote.create(
+    votable: event1,
+    voter: another_user
+  )
+end
+
+
+event2 = Event.create(
+  name: Faker::Lorem.sentence,
+  latitude: RANDOM_POSTION[0][0],
+  longitude: RANDOM_POSTION[0][1],
+  start_at: Faker::Date.between(5.days.ago, Date.today),
+  donation_due_date: Faker::Date.between(Date.today, 10.days.from_now),
+  short_description: Faker::Lorem.paragraph,
+  story: Faker::Lorem.paragraphs.join("\n"),
+  number_of_participant: "",
+  required_amount: Faker::Number.between(1000000, 10000000),
+  thumbnail_url: IMAGE_URLS.sample,
+  category: Category.all.sample,
+  enable: true,
+  user: user
+)
+if event2.enable
+  donate = Donation.create(
+    donatable: event2,
+    donor: another_user,
+    amount: Faker::Number.number(6)
+  )
+  vote = Vote.create(
+    votable: event2,
+    voter: another_user
+  )
+end
+
+event3 = Event.create(
+  name: Faker::Lorem.sentence,
+  latitude: RANDOM_POSTION[2][0],
+  longitude: RANDOM_POSTION[2][1],
+  start_at: Faker::Date.between(5.days.ago, Date.today),
+  donation_due_date: Faker::Date.between(Date.today, 10.days.from_now),
+  short_description: Faker::Lorem.paragraph,
+  story: Faker::Lorem.paragraphs.join("\n"),
+  number_of_participant: "",
+  required_amount: Faker::Number.between(1000000, 10000000),
+  thumbnail_url: IMAGE_URLS.sample,
+  category: Category.all.sample,
+  enable: true,
+  user: user
+)
+if event3.enable
+  donate = Donation.create(
+    donatable: event3,
+    donor: another_user,
+    amount: Faker::Number.number(6)
+  )
+  vote = Vote.create(
+    votable: event3,
+    voter: another_user
+  )
+end
+
+event4 = Event.create(
+  name: Faker::Lorem.sentence,
+  latitude: RANDOM_POSTION[3][0],
+  longitude: RANDOM_POSTION[3][1],
+  start_at: Faker::Date.between(5.days.ago, Date.today),
+  donation_due_date: Faker::Date.between(Date.today, 10.days.from_now),
+  short_description: Faker::Lorem.paragraph,
+  story: Faker::Lorem.paragraphs.join("\n"),
+  number_of_participant: "",
+  required_amount: Faker::Number.between(1000000, 10000000),
+  thumbnail_url: IMAGE_URLS.sample,
+  category: Category.all.sample,
+  enable: true,
+  user: user
+)
+if event4.enable
+  donate = Donation.create(
+    donatable: event4,
+    donor: another_user,
+    amount: Faker::Number.number(6)
+  )
+  vote = Vote.create(
+    votable: event4,
+    voter: another_user
+  )
+end
+
+(1..40).each do |i| 
   event = Event.create(
     name: Faker::Lorem.words(4).join(" "),
-    location: Faker::Lorem.sentence,
-    lat: Faker::Address.latitude,
-    lng: Faker::Address.longitude,
+    latitude: Faker::Address.latitude,
+    longitude: Faker::Address.longitude,
     start_at: Faker::Date.between(5.days.ago, Date.today),
     donation_due_date: Faker::Date.between(Date.today, 10.days.from_now),
     short_description: Faker::Lorem.paragraph,

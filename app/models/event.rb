@@ -1,4 +1,7 @@
 class Event < ActiveRecord::Base
+  geocoded_by :location   # can also be an IP address
+  after_validation :geocode          # auto-fetch coordinates
+
   after_update :notify_system
 
   belongs_to :user
@@ -15,6 +18,7 @@ class Event < ActiveRecord::Base
 
   scope :enable, -> { where(enable: true) }
   scope :featured, -> { enable.joins(:votes).group("events.id").order('count(events.id) DESC') }
+  scope :near_me, -> (lat, lon) { Event.near([lat, lon], 100).limit(10) }
 
   def vote_by!(user)
     # create a new vote associating user and photo

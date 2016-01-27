@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :near_me]
   before_action :load_categories, only: [:new, :edit]
   before_action :get_event, only: [:edit, :show, :update]
 
@@ -42,6 +42,11 @@ class EventsController < ApplicationController
       flash[:error] = @event.errors.full_messages.to_sentence
       render 'edit'
     end
+  end
+
+  def near_me
+    @events = Event.near_me(params[:lat], params[:lon])
+    render json: @events
   end
 
   private
