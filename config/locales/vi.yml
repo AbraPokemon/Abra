@@ -16,6 +16,7 @@ vi:
     donors: "Danh sách người ủng hộ"
     featured_idea: "Những ý tưởng nỗi bật"
     realtime_event: "Bảng tin"
+    idear_near_me: "Những ý tưởng gần bạn"
   date:
     order:
       - :day
@@ -29,4 +30,4 @@ vi:
       less_than_x_minutes: "vừa mới"
       x_hours: "%{count} giờ trước"
       x_minutes: "%{count} phút trước"
-
+  
