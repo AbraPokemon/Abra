@@ -81,11 +81,110 @@ header{
       font-size: $size-text;
       outline: none;
       box-shadow: none;
-      width: 150px;
+      width: 100px;
     }
   }
   .menu{
-      width: 323px;
+      width: 373px;
+      .avatar{
+        display: inline-block;
+        position: relative;
+        a{
+          text-decoration: none;
+          color: $color-main;
+          &:hover{
+            color: $color-sub1;
+            img{
+              border: 2px solid $color-sub1;
+            }
+          }
+        }
+        a span{
+          width: 83px;
+          margin-right: $size-unit;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+        img{
+          width: 35px;
+          height: 35px;
+          border: 2px solid $color-main;
+          box-sizing: border-box;
+          @include css3-styles(border-radius, 35px);
+        }
+        .info{
+          position: absolute;
+          padding: $size-unit-double;
+          background: $color-text2;
+          width: 250px;
+          box-sizing: border-box;
+          text-align: left;
+          border: 1px solid $color-gray;
+          top: 52px;
+          @include css3-styles(border-radius, $size-unit-half);
+          &:before, &:after{
+            border-left: $size-unit solid transparent;
+            border-right: $size-unit solid transparent;
+            border-bottom: 15px solid $color-text2;
+            border-top: 0;
+            content: "";
+            display: inline-block;
+            height: 0;
+            position: absolute;
+            width: 0;
+            left: 103px;
+          }
+          &:before {
+            border-bottom-color: $color-gray;
+            top: -15px;
+          }
+          &:after {
+            top: -14px;
+          }
+        }
+        .notification{
+          li{
+            margin: 10px 0 0 0;
+            &:first-child{
+              margin: 0;
+            }
+            p{
+              font-size: 12px;
+              line-height: 14px;
+            }
+            a{
+              color: $color-sub1;
+            }
+            span{
+              display: block;
+              text-align: right;
+              color: $color-gray;
+              font-size: 10px;
+              border-top: 1px dashed $color-gray;
+              padding-top: $size-unit-half;
+              margin-top: $size-unit-half;
+            }
+          }
+        }
+        .functions{
+          margin-top: $size-unit;
+          padding-top: $size-unit;
+          border-top: 1px solid;
+          li{
+            margin: $size-unit 0 0 0;
+            &:first-child{
+              margin: 0;
+            }
+          }
+          a{
+            color: $color-text1;
+          }
+        }
+      }
+      .button{
+        display: inline-block;
+      }
       li{
         margin-left: $size-unit;
         &:first-child{

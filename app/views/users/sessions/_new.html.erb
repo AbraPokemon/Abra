@@ -1,10 +1,37 @@
 <% if user_signed_in? %>
-  <%= link_to t("authen.sign_out"), destroy_user_session_path, method: :delete %>
+  <li class="inline middle avatar">
+    <a href="#">
+      <span class="inline middle">Tran Manh Hao</span>
+      <img class="inline middle" src="https://helpdeskgenie.com:3001/img/user1.jpg" />
+    </a>
+    <div class="info">
+      <ul class="notification">
+        <li>
+          <p>Ý tưởng <a href="#">Trồng rừng</a> đã nhận được <strong>500.000 VNĐ</strong> </p>
+          <span>cách đây 2 giờ</span>
+        </li>
+        <li>
+          <p>Bạn đã ủng hộ <a href="#">Trồng rừng</a> thành công với số <strong>500.000 VNĐ</strong> </p>
+          <span>cách đây 3 giờ</span>
+        </li>
+      </ul>
+      <ul class="functions">
+        <li>
+          <a class="link text-left icon" href="#"><i class="fa fa-cog"></i>Thông tin tài khoản</a>
+        </li>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete, class: "link text-left icon" do %>
+            <i class="fa fa-sign-out"></i> <%= t("authen.sign_out") %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </li>
 <% else %>
-  <li class="inline top">
+  <li class="inline middle">
     <%= render "users/registrations/form" %>
   </li>
-  <li class="inline top">
+  <li class="inline middle">
     <%= render "users/sessions/login_form" %>
   </li>
 <% end %>
