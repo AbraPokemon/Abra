@@ -6,6 +6,6 @@ class Donation < ActiveRecord::Base
 
   private
   def notify_system
-    donatable.notifications.create(message: "được ủng hộ <strong>#{ActionController::Base.helpers.number_to_currency(amount, locale: :vi)}</strong> để <a href='#''>thực hiện ý tưởng</a>")
+    donatable.notifications.create(message: "được ủng hộ <strong>#{ActionController::Base.helpers.number_to_currency(amount, format: "%n VNĐ")}</strong> để <a href='#''>thực hiện ý tưởng</a>")
   end
 end
