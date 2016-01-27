@@ -15,7 +15,7 @@
 
 <div class="idea-blocks wrapper">
   <div class="list inline top">
-    <h3>Featured Ideas</h3>
+    <h3><%= t("common.featured_idea") %></h3>
     <% @events.each do |e| %>
       <div class="block inline top">
         <%= image_tag e.thumbnail_url =%>
@@ -39,72 +39,18 @@
   </div>
 
   <div class="real-event inline top">
-    <h3>Realtime events</h3>
+    <h3><%= t("common.realtime_event") %></h3>
     <ul>
-      <li>
-        <img src="http://placeimg.com/300/300/people" />
-        <div class="content">
-          <h4><a href="#">Jame Bond</a></h4>
-          <p>has donated <strong>1000$</strong> to <a href="#">Plan a tree</a> </p>
-          <span>2 hours ago</span>
-        </div>
-      </li>
-      <li>
-        <img src="http://placeimg.com/300/300/people?asd" />
-        <div class="content">
-          <h4><a href="#">Plan a tree</a></h4>
-          <p>starts now</p>
-          <span>2 minutes ago</span>
-        </div>
-      </li>
-      <li>
-        <img src="http://placeimg.com/300/300/people?asd1" />
-        <div class="content">
-          <h4><a href="#">Jame Bond</a></h4>
-          <p>has donated <strong>1000$</strong> to <a href="#">Plan a tree</a> </p>
-          <span>2 hours ago</span>
-        </div>
-      </li>
-      <li>
-        <img src="http://placeimg.com/300/300/people?asd2" />
-        <div class="content">
-          <h4><a href="#">Plan a tree</a></h4>
-          <p>starts now</p>
-          <span>2 minutes ago</span>
-        </div>
-      </li>
-      <li>
-        <img src="http://placeimg.com/300/300/people?asd3" />
-        <div class="content">
-          <h4><a href="#">Jame Bond</a></h4>
-          <p>has donated <strong>1000$</strong> to <a href="#">Plan a tree</a> </p>
-          <span>2 hours ago</span>
-        </div>
-      </li>
-      <li>
-        <img src="http://placeimg.com/300/300/people?asd4" />
-        <div class="content">
-          <h4><a href="#">Plan a tree</a></h4>
-          <p>starts now</p>
-          <span>2 minutes ago</span>
-        </div>
-      </li>
-      <li>
-        <img src="http://placeimg.com/300/300/people?asd5" />
-        <div class="content">
-          <h4><a href="#">Jame Bond</a></h4>
-          <p>has donated <strong>1000$</strong> to <a href="#">Plan a tree</a> </p>
-          <span>2 hours ago</span>
-        </div>
-      </li>
-      <li>
-        <img src="http://placeimg.com/300/300/people?asd6" />
-        <div class="content">
-          <h4><a href="#">Plan a tree</a></h4>
-          <p>starts now</p>
-          <span>2 minutes ago</span>
-        </div>
-      </li>
+      <% @realtime_notifications.each do |notification| %>
+        <li>
+          <%= image_tag notification.event.thumbnail_url %>
+          <div class="content">
+            <h4><%= link_to notification.event.name, event_path(notification.event) %></h4>
+            <p><%= raw(notification.message) %></p>
+            <span><%= time_ago_in_words(notification.created_at) %></span>
+          </div>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>

@@ -3,10 +3,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :lockable, :async,
          omniauth_providers: [:facebook]
 
-  has_many :events
+  has_many :events, dependent: :destroy
   has_many :donations, as: :donor
   has_many :votes, as: :voter
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :participations
   has_many :participate_events, through: :participations, source: :user
 

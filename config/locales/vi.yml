@@ -14,6 +14,8 @@ vi:
       title: "ỦNG HỘ"
       fundraise: "cho sự kiện này"
     donors: "Danh sách người ủng hộ"
+    featured_idea: "Những ý tưởng nỗi bật"
+    realtime_event: "Bảng tin"
   date:
     order:
       - :day
@@ -22,3 +24,9 @@ vi:
   time:
     formats:
       long: "%Y-%m-%d %H:%M:%S"
+  datetime:
+    distance_in_words:
+      less_than_x_minutes: "vừa mới"
+      x_hours: "%{count} giờ trước"
+      x_minutes: "%{count} phút trước"
+
