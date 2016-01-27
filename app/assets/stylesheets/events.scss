@@ -1,87 +1,201 @@
 @import "mixin";
 
-#event-detail{
-  width: 80%;
-  margin: $size-unit-double auto;
-  min-width: 800px;
-  margin-top: 20px;
-  #detail-panel{
-    display: inline-block;
-    width: 70%;
-    min-width: 600px;
-    #story{
-      border: 1px solid $color-line;
-      height: 700px;
+.contents{
+  overflow: hidden;
+  margin-bottom: $size-unit-double;
+  .text{
+    width: 700px;
+    h3{
+      margin: 30px 0;
+      font-size: 30px;
+      font-weight: normal;
+      border-bottom: 1px solid $color-sub1;
+      padding-bottom: $size-unit;
+      text-transform: uppercase;
+    }
+    .block{
+      line-height: 20px;
+      &.map{
+        height: 200px;
+      }
+      &.list-comments{
+        form{
+          border: 1px solid $color-line;
+          padding: $size-unit;
+          box-sizing: border-box;
+          @include css3-styles(border-radius, $size-unit-half);
+        }
+        textarea{
+          width: 550px;
+          margin-right: $size-unit-double;
+          height: 70px;
+          border: none;
+          outline: none;
+          font-size: $size-text;
+        }
+        ul{
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+        .comment-inner{
+          overflow: hidden;
+          margin-top: $size-unit-double;
+        }
+        .avatar{
+          float: left;
+          width: 40px;
+          height: 40px;
+          text-align: center;
+          border-radius: 40px;
+          overflow: hidden;
+          border: 2px solid $color-main;
+          img{
+            width: 40px;
+            height: 40px;
+          }
+          i{
+            font-size: 30px;
+            margin: 5px 0px 0 5px;
+          }
+        }
+        .main-comment{
+          margin-left: 60px;
+          h4{
+            color: $color-main;
+            font-size: $size-h4;
+            margin: $size-unit-half 0;
+          }
+          span{
+            font-size: $size-text-small;
+            color: $color-gray;
+            border-top: 1px dotted $color-gray;
+            display: block;
+            margin-top: $size-unit-half;
+          }
+        }
+      }
     }
   }
-  #donate-panel{
-    display: inline-block;
-    width: 30%;
-    min-width: 200px;
+  .bar{
+    width: 300px;
     float: right;
-    #donate{
-      border: 1px solid $color-line;
-      padding: 20px;
-      h3{
-        font-size: 39px;
-        position: relative;
+    margin-top: $size-unit-double;
+    box-sizing: border-box;
+    h3{
+      font-size: 30px;
+      padding: $size-unit $size-unit-double;
+      border: 1px solid $color-main;
+    }
+    p{
+      font-size: 30px;
+      padding: $size-unit $size-unit-double;
+    }
+    .block{
+      margin-bottom: $size-unit-double;
+    }
+    .progress-bar{
+      height: $size-unit-double;
+      background: $color-line;
+      position: relative;
+      margin-top: 30px;
+      .bar-line{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: $color-green;
+        z-index: 0;
+        opacity: 0.5;
+      }
+      .percent{
+        display: block;
         text-align: center;
+        line-height: 22px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: $color-text2;
         width: 100%;
       }
-      #donate-button {
-        margin-top: 10px;
-        color: white;
-        padding: 10px;
-        cursor: pointer;
-        text-align: center;
-        background-color: $color-main;
-        span{
-          font-size: 20px;
-        }
+    }
+    .line{
+      margin: $size-unit 0;
+      label{
+        margin-right: $size-unit;
       }
-      #social{
-        width: 100%;
-        margin-top: 10px;
-        color: white;
-        span#fb{
-          display: inline-block;
-          padding-top: 10px;
-          width: 32%;
-          cursor: pointer;
-          text-align: center;
-          font-size: 25px;
-          min-width: 70px;
-          height: 50px;
-          background-color: $color-main;
+      span{
+        font-size: 20px;
+        font-weight: bold;
+        &.money1{
+          color: $color-sub1;
         }
-        span#twitter{
-          display: inline-block;
-          width: 32%;
-          text-align: center;
-          font-size: 25px;
-          min-width: 70px;
-          cursor: pointer;
-          padding-top: 10px;
-          height: 50px;
-          background-color: $color-twitter;
-        }
-        span#gg-plus{
-          display: inline-block;
-          width: 32%;
-          text-align: center;
-          cursor: pointer;
-          font-size: 25px;
-          min-width: 70px;
-          height: 50px;
-          padding-top: 10px;
-          background-color: #dd4b39;
+        &.money2{
+          color: $color-main;
         }
       }
     }
-    #donor-list{
-      border: 1px solid $color-line;
-      height: 400px;
-      padding: 20px;
+    a{
+      display: inline-block;
+    }
+    center{
+      margin: $size-unit 0;
+    }
+    .votes{
+      border-top: 1px dashed $color-gray;
+      border-bottom: 1px dashed $color-gray;
+      padding: $size-unit-double 0;
+      span{
+        margin-right: $size-unit;
+      }
+      a{
+        padding: $size-unit-half;
+      }
+      i{
+        font-size: 15px;
+      }
+    }
+    .social{
+      text-align: center;
+      .button{
+        display: inline-block;
+        width: 100px;
+        margin: 0 10px;
+      }
+    }
+    .donors{
+      background-color: $color-line;
+      h4{
+        background: #333;
+        font-size: 18px;
+        font-weight: normal;
+        padding: 10px;
+        padding-bottom: 10px;
+        color: #fff;
+      }
+      ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      li{
+        margin-top: 10px;
+        border-bottom: 1px dotted #ccc;
+        padding: 0 10px 10px 10px;
+      }
+      img{
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        box-sizing: border-box;
+        border: 2px solid;
+        vertical-align: middle;
+      }
+      span{
+        vertical-align: middle;
+        margin-left: 10px;
+        font-size: 15px;
+      }
     }
   }
 }

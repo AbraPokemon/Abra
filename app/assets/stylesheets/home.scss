@@ -17,6 +17,7 @@
     left: 50%;
     @include css3-styles(transform, translate(-50%, -20%));
     z-index: -1;
+    min-width: 1600px;
   }
   .event-contents{
     color: $color-text2;
@@ -141,6 +142,7 @@
     font-weight: normal;
     border-bottom: 1px solid $color-sub1;
     padding-bottom: $size-unit;
+    text-transform: uppercase;
   }
   .block{
     width: 200px;
@@ -173,8 +175,8 @@
       text-overflow: ellipsis;
       display: -webkit-box;
       line-height: 15px;
-      @include css3-styles(-webkit-line-clamp, 8);
-      @include css3-styles(-webkit-box-orient, vertical);
+      @include css3-styles(line-clamp, 8);
+      @include css3-styles(box-orient, vertical);
     }
     .button{
       position: absolute;
@@ -205,6 +207,10 @@
       font-size: 11px;
       li{
         margin-top: $size-unit-half;
+        overflow: hidden;
+        width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
       i{
         width: $size-unit-double;
@@ -262,7 +268,7 @@
       }
       p{
         height: 59px;
-        @include css3-styles(-webkit-line-clamp, 4);
+        @include css3-styles(line-clamp, 4);
       }
       .love-us{
         top: 172px;
@@ -272,7 +278,7 @@
       width: 400px;
       p{
         height: 31px;
-        @include css3-styles(-webkit-line-clamp, 2);
+        @include css3-styles(line-clamp, 2);
       }
       .button{
         top: 110px;
@@ -312,6 +318,7 @@
     font-weight: normal;
     border-bottom: 1px solid $color-sub1;
     padding-bottom: $size-unit;
+    text-transform: uppercase;
   }
   .idea-map{
     width: 100%;

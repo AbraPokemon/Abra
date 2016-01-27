@@ -10,60 +10,87 @@
   </ul>
 </div>
 
-<div class="votes">
-  <%= render "votes/votes" %>
-</div>
-
-<div id="event-detail">
-  <div id="detail-panel">
-    <div id="story">
-      <div id="tab-panel">
-        <article class="tabs">
-          <section id="tab-about">
-
-          </section>
-          <section id="tab-comments">
-            <div class="list-comments">
-              <%= render 'comments/comment_list' %>
-            </div>
-          </section>
-          <section id="tab-update">
-          </section>
-        </article>
-      </div>
-      <hr>
-      <div id="content">
-        <%= @event.story %>
-      </div>
+<div class="contents wrapper">
+  <div class="text inline top">
+    <h3>Nội dung</h3>
+    <div class="block description">
+      <%= @event.story %>
+    </div>
+    <h3>Chương trình</h3>
+    <div class="block timeline">
+      <%= @event.story %>
+    </div>
+    <h3>Bảng đồ</h3>
+    <div class="block map" id="map"></div>
+    <h3>Bình luận</h3>
+    <div class="block list-comments">
+      <%= render 'comments/comment_list' %>
     </div>
   </div>
-  <div id="donate-panel">
-    <div id="donate">
-      <div class="money">
-        <h3>
-          525,5887 VNĐ
-        </h3>
+  <div class="bar inline top">
+    <div class="block">
+      <div class="progress-bar">
+        <div class="bar-line animation" style="width:60%;"></div>
+        <span class="percent">60%</span>
       </div>
-      <div id="donate-button">
-        <h3><%= t("common.donate.title") %></h3>
-        <span><%= t("common.donate.fundraise") %></span>
+      <div class="line">
+        <label>Số tiền cần thiết</label>
+        <span class="money1">8,000,000VNĐ</span>
       </div>
-      <div id="social">
-        <span id="fb"><i class="fa fa-facebook"></i></span>
-        <span id="twitter"><i class="fa fa-twitter"></i></span>
-        <span id="gg-plus"><i class="fa fa-google-plus"></i></span>
+      <div class="line">
+        <label>Số tiền thu được</label>
+        <span class="money2">5,000,000VNĐ</span>
       </div>
+      <div class="line">
+        <label>Ngày kết thúc</label>
+        <span>23/02/2016</span>
+      </div>
+      <center>
+        <a class="button main donate"><%= t("common.donate.title") %></a>
+      </center>
     </div>
-    <div id="donor-list">
-      <h3><%= t("common.donors") %></h3>
+
+    <div class="block votes">
+      <%= render "votes/votes" %>
+    </div>
+
+    <div class="block social">
+      <a class="button facebook icon"><i class="fa fa-facebook"></i>facebook</a>
+      <a class="button twitter icon"><i class="fa fa-twitter"></i>twitter</a>
+    </div>
+
+    <div class="block donors">
+      <h4><%= t("common.donors") %></h4>
       <ul>
         <li>
-          User1
+          <img src="http://placeimg.com/300/300/people"/>
+          <span>Tran Manh Hao</span>
         </li>
         <li>
-          User2
+          <img src="http://placeimg.com/300/300/people?1"/>
+          <span>Tran Manh Hao</span>
         </li>
       </ul>
     </div>
+
   </div>
 </div>
+
+<script>
+  function initialize() {
+    var bangalore = { lat: 12.97, lng: 77.59 };
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 15,
+      scrollwheel: false,
+      center: bangalore
+    });
+
+    var marker = new google.maps.Marker({
+      position: bangalore,
+      map: map
+    });
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+

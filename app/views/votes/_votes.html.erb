@@ -1,9 +1,12 @@
-<%= @event.reload.vote_count %> votes
-<br>
+<span class="inline middle"><%= @event.reload.vote_count %> người thích</span>
 <% if signed_in? %>
   <% if @event.voted_by?(current_user) %>
-    <%= link_to 'unvote', unvote_event_votes_path(@event), method: :put, remote: true %>
+    <%= link_to unvote_event_votes_path(@event), method: :put, remote: true, class: "button sub inline middle" do %>
+      <i class="fa fa-thumbs-o-down"></i>
+    <% end %>
   <% else %>
-    <%= link_to 'vote', vote_event_votes_path(@event), method: :put, remote: true %>
+    <%= link_to vote_event_votes_path(@event),class: "button main inline middle", method: :put, remote: true do%>
+      <i class="fa fa-thumbs-o-up"></i>
+    <% end %>
   <% end %>
 <% end %>
