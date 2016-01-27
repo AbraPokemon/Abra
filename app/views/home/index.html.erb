@@ -63,16 +63,16 @@
 <div class="summary">
   <ul class="wrapper">
     <li class="inline top">
-      <h4>389</h4>
-      <span><strong>ideas</strong> was created</span>
+      <h4><%= Event.enable.size %></h4>
+      <span><strong>ý tưởng</strong> đã được khởi tạo</span>
     </li>
     <li class="inline top">
-      <h4>45,624,000</h4>
+      <h4><%= number_to_currency(Donation.sum(:amount).floor, format: "%n VNĐ") %></h4>
       <span><strong>VND</strong> was raised</span>
     </li>
     <li class="inline top">
-      <h4>478,424</h4>
-      <span><strong>people</strong> were joined anddonated</span>
+      <h4><%= User.all.size %></h4>
+      <span><strong>nhà tự thiện</strong> đã tham gia quyên góp</span>
     </li>
   </ul>
 </div>
