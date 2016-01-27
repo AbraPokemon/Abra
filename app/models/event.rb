@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+  after_update :notify_system
+
   belongs_to :user
   belongs_to :category
 
@@ -7,6 +9,7 @@ class Event < ActiveRecord::Base
   has_many :comments
   has_many :participations
   has_many :participants, through: :participations, source: :event
+  has_many :notifications, dependent: :destroy
 
   validates :category, presence: true
 
@@ -31,4 +34,12 @@ class Event < ActiveRecord::Base
   def vote_count
     votes.size
   end
+
+  private
+  def notify_system
+    if changes['enable']
+      notifications.create(message: "vừa được khởi tạo")
+    end
+  end
+
 end

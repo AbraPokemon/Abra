@@ -1,7 +1,4 @@
-Event.destroy_all
-Comment.destroy_all
 User.destroy_all
-
 Category.destroy_all
 
 category_education =  Category.create(name: 'Khuyến học', image_url: 'http://placehold.it/150x150.png/000', enable: true);
@@ -62,18 +59,20 @@ IMAGE_URLS = [
     required_amount: Faker::Number.between(1000000, 10000000),
     thumbnail_url: IMAGE_URLS.sample,
     category: Category.all.sample,
-    enable: true,
+    enable: [false,true].sample,
     user: user
   )
-  donate = Donation.create(
-    donatable: event,
-    donor: another_user,
-    amount: Faker::Number.number(6)
-  )
-  vote = Vote.create(
-    votable: event,
-    voter: another_user
-  )
+  if event.enable
+    donate = Donation.create(
+      donatable: event,
+      donor: another_user,
+      amount: Faker::Number.number(6)
+    )
+    vote = Vote.create(
+      votable: event,
+      voter: another_user
+    )
+  end
 end
 
 
