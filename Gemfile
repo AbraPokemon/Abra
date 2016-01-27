@@ -25,6 +25,7 @@ gem 'aws-sdk'
 gem 'pundit'
 gem 'stripe'
 gem 'activeadmin', '~> 1.0.0.pre2'
+gem 'faker'
 
 group :development do
   gem "letter_opener"
@@ -35,7 +36,6 @@ group :development, :test do
   gem 'web-console'
   gem 'spring'
   gem 'rspec-rails'
-  gem 'faker'
 end
 
 group :test do
