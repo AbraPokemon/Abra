@@ -19,5 +19,8 @@ Rails.application.routes.draw do
         put :unvote
       end
     end
+    collection do
+      get :near_me
+    end
   end
 end
