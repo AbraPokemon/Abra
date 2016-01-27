@@ -1,9 +1,13 @@
 <%= simple_form_for @event, :html => {:multipart => true}  do |f| %>
-
-    <%= f.input :name, :label => "Tên sự kiện", autofocus: true %>
-
-    <%= f.input :category_id, :label => "Thể loại", collection: @categories %>
-
+    <div class="double row1">
+      <%= f.input :name, :label => "Tên sự kiện", autofocus: true %>
+      <%= f.input :category_id, :label => "Thể loại", collection: @categories %>
+    </div>
+    <div class="double row2">
+      <%= f.input :required_amount, :label => "Số tiền cần giúp đỡ" %>
+      <%= f.input :number_of_participant, :label => "Số lượng người tham gia" %>
+    </div>
+    <%= f.input :short_description, :label => "Giới thiệu ", as: :text %>
     <%= f.input :location, :label => "Địa điểm", input_html: { id: "autocomplete", onFocus: "geolocate()" } %>
 
     <%= f.input :city, :as => :hidden, input_html: { id: "city" }  %>
@@ -14,21 +18,19 @@
 
     <%= f.input :thumbnail_url, :label => "Hình ảnh", as: :file %>
 
+    <h4>Thời gian</h4>
+
     <%= f.input :start_at, :label => "Thời gian bắt đầu" %>
-
-    <%= f.input :short_description, :label => "Giới thiệu", as: :text %>
-
-    <%= f.input :number_of_participant, :label => "Số lượng người tham gia" %>
-
-    <%= f.input :required_amount, :label => "Số tiền cần giúp đỡ" %>
 
     <%= f.input :donation_due_date, :label => "Ngày hết hạn ủng hộ" %>
 
-    <%= f.input :story, :label => "Câu chuyện của bạn", input_html: { id: "edit" } %>
+    <h4>Thông tin chi tiết</h4>
 
-    <%= f.button :submit, "Xem Trước" %>
+    <%= f.input :story, input_html: { id: "edit" } %>
 
-    <%= f.button :submit %>
+    <div class="buttons">
+      <%= f.button :submit, "Xem Trước", class: "button sub inline top" %>    <%= f.button :submit , class: "button main inline top" %>
+    </div>
 
 <% end %>
 
@@ -83,7 +85,10 @@
   }
 
   $(function() {
-    $('#edit').froalaEditor();
+    $('#edit').froalaEditor({
+      width: '764',
+      height: '300'
+    });
   });
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkKcB2Vfei2ySQzJ17rfXX_19IGzJaxms&signed_in=true&libraries=places&callback=initAutocomplete" async defer></script>
