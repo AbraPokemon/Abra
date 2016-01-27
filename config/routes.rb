@@ -23,4 +23,6 @@ Rails.application.routes.draw do
       get :near_me
     end
   end
+
+  resources :donations
 end

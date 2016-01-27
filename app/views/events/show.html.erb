@@ -20,7 +20,7 @@
     <div class="block timeline">
       <%= @event.story %>
     </div>
-    <h3>Bảng đồ</h3>
+    <h3>Bản đồ</h3>
     <div class="block map" id="map"></div>
     <h3>Bình luận</h3>
     <div class="block list-comments">
@@ -46,7 +46,15 @@
         <span>23/02/2016</span>
       </div>
       <center>
-        <a class="button main donate"><%= t("common.donate.title") %></a>
+        <%= form_tag donations_path do %>
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-name="Abra"
+            data-amount="1000000"
+            data-currency="vnd"
+            data-panel-label="Ủng Hộ"
+            data-locale="vi"></script>
+        <% end %>
       </center>
     </div>
 
