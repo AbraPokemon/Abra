@@ -30,4 +30,5 @@ vi:
       less_than_x_minutes: "vừa mới"
       x_hours: "%{count} giờ trước"
       x_minutes: "%{count} phút trước"
+      about_x_hours: "%{count} giờ trước"
   
