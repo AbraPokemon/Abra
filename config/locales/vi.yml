@@ -27,6 +27,7 @@ vi:
       long: "%Y-%m-%d %H:%M:%S"
   datetime:
     distance_in_words:
+      about_x_hours: "khoảng 1 giờ "
       less_than_x_minutes: "vừa mới"
       x_hours: "%{count} giờ trước"
       x_minutes: "%{count} phút trước"
