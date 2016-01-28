@@ -46,7 +46,8 @@
         <span>23/02/2016</span>
       </div>
       <center>
-        <%= form_tag donations_path do %>
+        <%= form_tag donations_path do |f| %>
+          <%= hidden_field(:event_id, value: @event.id) %>
           <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
             data-name="Abra"
