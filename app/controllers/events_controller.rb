@@ -14,6 +14,7 @@ class EventsController < ApplicationController
   end
 
   def create
+    debugger
     event = Event.new event_params
     event.user = current_user
     thumbnail_file_path = "abra/event/thumbnail/#{Time.now.strftime("%Y/%m/%d/")}#{SecureRandom.hex(13)}#{File.extname(params[:event][:thumbnail_url].original_filename)}"
@@ -25,7 +26,8 @@ class EventsController < ApplicationController
     event.thumbnail_url = obj.public_url
 
     if event.save
-      redirect_to event_path(event)
+      flash[:success] = "Ý tưởng được tạo thành công"
+      redirect_to root_path
     else
       render 'new'
     end
