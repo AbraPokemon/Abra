@@ -47,7 +47,7 @@
       </div>
       <center>
         <%= form_tag donations_path do |f| %>
-          <%= hidden_field(:event_id, value: @event.id) %>
+          <%= hidden_field(:donation, :event_id, value: @event.id) %>
           <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
             data-name="Abra"
