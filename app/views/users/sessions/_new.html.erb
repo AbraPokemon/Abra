@@ -1,10 +1,10 @@
 <% if user_signed_in? %>
-  <li class="inline middle avatar">
+  <li class="inline middle avatar" id="user">
     <a href="#">
       <span class="inline middle">Tran Manh Hao</span>
       <img class="inline middle" src="https://helpdeskgenie.com:3001/img/user1.jpg" />
     </a>
-    <div class="info">
+    <div class="info" id="user-info">
       <ul class="notification">
         <li>
           <p>Ý tưởng <a href="#">Trồng rừng</a> đã nhận được <strong>500.000 VNĐ</strong> </p>
@@ -26,6 +26,20 @@
         </li>
       </ul>
     </div>
+    <script>
+      $(document).ready(function() {
+        $('#user-info').css('display', 'none');
+
+        $('#user').on('click', function() {
+          if ($('#user-info').css('display') == 'block') {
+            $('#user-info').css('display', 'none');
+          } else {
+            $('#user-info').css('display', 'block');
+          }
+        })
+
+      });
+    </script>
   </li>
 <% else %>
   <li class="inline middle">
