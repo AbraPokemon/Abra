@@ -14,7 +14,7 @@
   <div class="text inline top">
     <h3>Nội dung</h3>
     <div class="block description">
-      <%= @event.story %>
+      <%= @event.short_description %>
     </div>
     <h3>Chương trình</h3>
     <div class="block timeline">
@@ -31,19 +31,19 @@
     <div class="block">
       <div class="progress-bar">
         <div class="bar-line animation" style="width:60%;"></div>
-        <span class="percent">60%</span>
+        <span class="percent"><%= (@event.donations.sum(:amount) / @event.required_amount).round(2) *100 %>%</span>
       </div>
       <div class="line">
         <label>Số tiền cần thiết</label>
-        <span class="money1">8,000,000VNĐ</span>
+        <span class="money1"><%= number_to_currency(@event.required_amount, format: "%n VNĐ") %></span>
       </div>
       <div class="line">
         <label>Số tiền thu được</label>
-        <span class="money2">5,000,000VNĐ</span>
+        <span class="money2"><%= number_to_currency(@event.donations.sum(:amount), format: "%n VNĐ") %></span>
       </div>
       <div class="line">
         <label>Ngày kết thúc</label>
-        <span>23/02/2016</span>
+        <span><%= @event.donation_due_date.strftime("%d/%m/%Y") %></span>
       </div>
       <center>
         <%= form_tag donations_path do |f| %>
@@ -71,14 +71,12 @@
     <div class="block donors">
       <h4><%= t("common.donors") %></h4>
       <ul>
-        <li>
-          <img src="http://placeimg.com/300/300/people"/>
-          <span>Tran Manh Hao</span>
-        </li>
-        <li>
-          <img src="http://placeimg.com/300/300/people?1"/>
-          <span>Tran Manh Hao</span>
-        </li>
+        <% @event.donations.each do |donation| %>
+          <li>
+            <%= image_tag donation.donor.avatar_url %>
+            <span><%= donation.donor.email %></span>
+          </li>
+        <% end %>
       </ul>
     </div>
 
