@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
+  resources :users, only: [:show]
   resources :events do
     resources :comments
     resources :votes, only: [] do
