@@ -46,3 +46,5 @@
 //= require plugins/table.min.js
 //= require plugins/url.min.js
 //= require plugins/video.min.js
+//= require modernizr.custom.26633
+//= require jquery.gridrotator

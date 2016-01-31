@@ -1,1 +1,0 @@
-$(document).on 'page:change', ->

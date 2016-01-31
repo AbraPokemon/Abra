@@ -18,7 +18,7 @@
     </div>
     <h3>Chương trình</h3>
     <div class="block timeline">
-      <%= @event.story %>
+      <%= raw(@event.story) %>
     </div>
     <h3>Bản đồ</h3>
     <div class="block map" id="map"></div>
@@ -30,7 +30,7 @@
   <div class="bar inline top">
     <div class="block">
       <div class="progress-bar">
-        <div class="bar-line animation" style="width:60%;"></div>
+        <div class="bar-line animation" style="width:<%= (@event.donations.sum(:amount) / @event.required_amount).round(2) *100 %>%"></div>
         <span class="percent"><%= (@event.donations.sum(:amount) / @event.required_amount).round(2) *100 %>%</span>
       </div>
       <div class="line">
@@ -48,13 +48,31 @@
       <center>
         <%= form_tag donations_path do |f| %>
           <%= hidden_field(:donation, :event_id, value: @event.id) %>
-          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-            data-name="Abra"
-            data-amount="1000000"
-            data-currency="vnd"
-            data-panel-label="Ủng Hộ"
-            data-locale="vi"></script>
+          <button id="customButton">Ủng Hộ</button>
+          <script>
+            var handler = StripeCheckout.configure({
+              key: "<%= Rails.configuration.stripe[:publishable_key] %>",
+              image: '/img/documentation/checkout/marketplace.png',
+              locale: 'auto',
+              token: function(token) {
+                console.log(token.id);
+              }
+            });
+
+            $('#customButton').on('click', function(e) {
+              handler.open({
+                name: 'hoa nguyen',
+                description: '2 widgets',
+                amount: 2000
+              });
+              e.preventDefault();
+            });
+
+            // Close Checkout on page navigation
+            $(window).on('popstate', function() {
+              handler.close();
+            });
+          </script>
         <% end %>
       </center>
     </div>

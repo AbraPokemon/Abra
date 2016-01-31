@@ -1,17 +1,26 @@
-<div class="special-event">
-  <ul>
-    <li>
-      <% if @hotEvent %>
-        <img src="<%= image_path('project1.jpg') %>" alt="Project 1"/>
-        <div class="event-contents text-center">
-          <h3><%= @hotEvent.name.mb_chars.capitalize.to_s %></h3>
-          <p><%= @hotEvent.short_description %></p>
-          <a class="button icon main big text-left" href=<%= event_path(@hotEvent) %>><i class="fa fa-thumbs-o-up"></i>Join us</a>
-        </div>
-      <% end %>
-    </li>
-  </ul>
-</div>
+<ul>
+  <li>
+    <div class="special-event">
+      <div id="ri-grid" class="ri-grid">
+        <%= image_tag "loading.gif", class: "ri-loading-image" %>
+        <ul>
+          <% Event.all.pluck(:thumbnail_url).each do |thumbnail| %>
+            <li>
+              <%= link_to '#' do %>
+                <%= image_tag thumbnail %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="event-contents text-center">
+        <h3 id="ideal-number"><%= Event.all.size %></h3>
+        <p>Ý tưởng đã được khởi tạo</p>
+        <a class="button icon main big text-left" href=<%= event_path(@hotEvent) %>><i class="fa fa-thumbs-o-up"></i>Tạo ý tưởng</a>
+      </div>
+    </div>
+  </li>
+</ul>
 
 <div class="idea-blocks wrapper">
   <div class="list inline top">
@@ -76,8 +85,13 @@
     </li>
   </ul>
 </div>
-
 <script>
+  $('#ri-grid').gridrotator({
+    w1024 : {
+      rows : 4,
+      columns : 16
+    }
+  });
   // In the following example, markers appear when the user clicks on the map.
   // Each marker is labeled with a single alphabetical character.
   var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -126,7 +140,6 @@
         success: function(data) {
           $.each(data, function(k, v){
             location_gmap = { lat: v.latitude, lng: v.longitude };
-            console.log(v.name + ":" +location_gmap)
             addMarker(location_gmap, map, "iconEvent", v);
           });
         }

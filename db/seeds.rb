@@ -169,7 +169,7 @@ end
     required_amount: Faker::Number.between(1000000, 10000000),
     thumbnail_url: IMAGE_URLS.sample,
     category: Category.all.sample,
-    enable: [false,true].sample,
+    enable: true,
     user: user
   )
   if event.enable
