@@ -125,11 +125,13 @@ $black_70: rgba(0, 0, 0, 0.7);
   display: none;
 }
 
+.event-detail-thumbnail{
+  height: 500px;
+}
 
 .special-event{
   overflow: hidden;
   position: relative;
-  background: $color-text1;
   img{
     position: absolute;
     top: 0;
