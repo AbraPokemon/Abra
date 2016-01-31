@@ -1,47 +1,77 @@
-<p> Hi <%= @fd.donor.full_name %>,</p>
-<p>You have donated successful to the event</p>
-<table width="600" bgcolor="#cccccc">
-  <tbody>
-    <tr>
-      <td align="center" valign="top">
-        <table width="500" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" valign="top" style="overflow:hidden!important;border-radius:3px">
-          <tbody>
-            <tr>
-              <td align="center" width="500"><%= image_tag attachments['charity.jpg'].url %></td>
-            </tr>
-            <tr>
-              <td><h3><%= @fd.donatable.name %></h3></td>
-            </tr>
-            <tr>
-              <td><%= @fd.donatable.short_description %></td>
-            </tr>      
-          </tbody>
-        </table>
-      </td>
-    </tr>
-    <tr height="40"><td>&nbsp;</td></tr>
-    <tr>
-      <td bgcolor="#ffffff"><h1>Similar event</h1></td>
-    </tr>
-    <% @recommendedEvent.each do |re| %>
-      <tr height="40"><td>&nbsp;</td></tr>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title></title>
+    <style></style>
+  </head>
+  <body>
+    <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable" style="font-family: arial;color: #333;">
       <tr>
         <td align="center" valign="top">
-          <table width="500" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" valign="top" style="overflow:hidden!important;border-radius:3px">
-            <tbody>
-              <tr>
-                <td align="center" width="500"><%= image_tag attachments['charity.jpg'].url %></td>
-              </tr>
-              <tr>
-                <td><h3><%= re.name %></h3></td>
-              </tr>
-              <tr>
-                <td><%= re.short_description %></td>
-              </tr>
-            </tbody>
-          </table>
+            <table border="0" cellpadding="10" cellspacing="0" width="800" id="emailContainer">
+                <tr>
+                    <td align="left" valign="top">
+                        <img style="width:200px;" src="<%= image_path "logo.png" %>" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top" style="line-height: 25px;">
+                        <p>Thân chào <strong><%= @fd.donor.full_name %></strong>,</p>
+                        <p>Cám ơn bạn đã tham gia vào chương trình <strong style="color: #f15c75;"><%= @fd.donatable.name %></strong>. Hiện tại, chúng tôi đang bắt đầu một số chương trình tương tự và đang cần những nhà hảo tâm như bạn.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top">
+                        <table border="0" cellpadding="10" cellspacing="0" width="800" id="emailContainer">
+                            <tr>
+                                <td align="left" valign="top" style="padding: 0;">
+                                    <h4 style="margin: 0;text-transform: uppercase;color: #3572b0;">Đại sứ góp sách</h4>
+                                    <p>Chương trình 1.000 đại sứ góp sách cho trẻ em nông thôn Việt do Tủ sách Giải trí & Giáo dục tổ chức, nhằm quyên góp 10.000 quyển sách để xây dựng 25 tủ sách (400 quyển/tủ) ở 25 bản làng của 2 huyện miền núi Đông Giang và Tây Giang (tỉnh Quảng Nam)</p>
+                                    <br/>
+                                    <a style="background-color: #f15c75;color: #fff;padding: 10px 20px;border-radius: 5px;">Chi tiết</a>
+                                </td>
+                                <td align="right" valign="top" style="padding: 0;">
+                                    <img style="width:300px;" src="gop_sach.png" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="left" valign="top" style="padding: 20px 0;">
+                                    <hr/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="top" style="padding: 0;">
+                                    <img style="width:300px;height: 208px;" src="trung_thu.jpg" />
+                                </td>
+                                <td align="left" valign="top" style="padding: 0;">
+                                    <h4 style="margin: 0;text-transform: uppercase;color: #3572b0;">đêm hội trăng rằm</h4>
+                                    <p>Nhằm góp phần mang lại niềm vui cho trẻ em nghèo nhân dịp Tết Trung thu 2015, nhóm từ thiện Buôn Ma Thuột tổ chức đêm hội trăng rằm và tặng hơn 2.000 bánh trung thu cho các em thiếu nhi tại các xã Ea Bhốc (Cư Kuin), Phú Xuân (Krông Năng), Cư Knia (Buôn Đôn), Cuôr Đăng (Cư M’gar).</p>
+                                    <br/>
+                                    <a style="background-color: #f15c75;color: #fff;padding: 10px 20px;border-radius: 5px;">Chi tiết</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" valign="top">
+                        <br/><br/>
+                        <a href="#" style="color: #f15c75;font-size: 13px;">Không nhận email này nữa</a> | <a href="#" style="color: #f15c75;font-size: 13px;">Mở email này bằng trình duyệt</a>
+                        <br/><br/>
+                    </td>bằng
+                </tr>
+                <tr>
+                    <td align="center" valign="top" style="background-color: #333;color: #fff;font-size: 13px;">
+                        Copyright © 2016 ALL RIGHTS RESERVED BY ABRA TEAM
+                    </td>
+                </tr>
+            </table>
         </td>
       </tr>
-    <% end %>
-  </tbody> 
-</table>
+    </table>
+  </body>
+</html>
+
+
+

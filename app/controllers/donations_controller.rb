@@ -5,6 +5,7 @@ class DonationsController < ApplicationController
     event = Event.find(params[:donation][:event_id])
     donation = Donation.new(donatable: event, donor: current_user, amount: 1000000)
     if donation.save
+      SendDonationMailWorker.perform_async(donation.id)
       flash[:success] = "Bạn ủng hộ thành công"
       redirect_to event
     else
