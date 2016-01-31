@@ -45,9 +45,12 @@
         <label>Ngày kết thúc</label>
         <span><%= @event.donation_due_date.strftime("%d/%m/%Y") %></span>
       </div>
+      <% if signed_in? %>
       <center>
+        <script src="https://checkout.stripe.com/checkout.js"></script>
         <%= form_tag donations_path do |f| %>
           <%= hidden_field(:donation, :event_id, value: @event.id) %>
+          <input type="number" id="amount" class="" >
           <button id="customButton">Ủng Hộ</button>
           <script>
             var handler = StripeCheckout.configure({
@@ -60,10 +63,12 @@
             });
 
             $('#customButton').on('click', function(e) {
+              var amount = $("#amount").val();
               handler.open({
-                name: 'hoa nguyen',
-                description: '2 widgets',
-                amount: 2000
+                name: 'Ủng hộ <%= @event.name %>',
+                description: '<%= current_user.email %>',
+                amount: amount,
+                currency: 'VND'
               });
               e.preventDefault();
             });
@@ -75,6 +80,7 @@
           </script>
         <% end %>
       </center>
+      <% end %>
     </div>
 
     <div class="block votes">
