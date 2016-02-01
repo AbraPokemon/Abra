@@ -6,7 +6,7 @@ ActiveAdmin.register Event do
   permit_params :name,
       :category_id, :location, :city, :lat, :lng,
       :start_at, :short_description, :number_of_participant,
-      :required_amount, :donation_due_date, :story, :thumbnail_url, :enable
+      :required_amount, :donation_due_date, :story, :thumbnail_url, :enable, :success, :phone_number
 
   index do
     id_column

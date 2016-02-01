@@ -70,6 +70,7 @@ class Event < ActiveRecord::Base
       SendSmsWorker.new.perform(id)
       SendEmailEventCloseWorker.new.perform(id)
     end
+    true
   end
 
 end
