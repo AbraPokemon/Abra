@@ -16,7 +16,7 @@
       <div class="event-contents text-center">
         <h3 id="ideal-number"><%= Event.all.size %></h3>
         <p>Ý tưởng đã được khởi tạo</p>
-        <a class="button icon main big text-left" href=<%= event_path(@hotEvent) %>><i class="fa fa-thumbs-o-up"></i>Tạo ý tưởng</a>
+        <a class="button icon main big text-left" href="<%= new_event_path %>">Tạo ý tưởng</a>
       </div>
     </div>
   </li>
@@ -29,8 +29,8 @@
       <div class="block inline top">
         <%= image_tag e.thumbnail_url =%>
         <a class="button animation main" href=<%= event_path(e) %>>View idea</a>
-        <h4><%= e.name.mb_chars.capitalize.to_s %></h4>
-        <p><%= e.short_description.mb_chars.capitalize.to_s %></p>
+        <h4><%= truncate(e.name.mb_chars.capitalize.to_s, length: 20) %></h4>
+        <p><%= truncate(e.short_description.mb_chars.capitalize.to_s, length: 350) %></p>
         <a class="love-us" href="#"><%= e.votes.size %> <i class="fa fa-heart"></i></a>
         <ul class="more">
           <li><i class="fa fa-user"></i>Tác giả: <strong><%= e.user.full_name %></strong></li>
@@ -54,7 +54,7 @@
         <li>
           <%= image_tag notification.event.thumbnail_url %>
           <div class="content">
-            <h4><%= link_to notification.event.name.mb_chars.capitalize.to_s, event_path(notification.event) %></h4>
+            <h4><%= link_to truncate(notification.event.name.mb_chars.capitalize.to_s, length: 25), event_path(notification.event) %></h4>
             <p><%= raw(notification.message) %></p>
             <span><%= time_ago_in_words(notification.created_at) %></span>
           </div>
