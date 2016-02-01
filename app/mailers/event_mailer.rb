@@ -8,7 +8,7 @@ class EventMailer < ApplicationMailer
   def donate_successful(donation)
     # hard-coded for first donation
     @fd = donation
-    @recommendedEvent = Event.limit 5
+    @recommendedEvent = Event.limit(5)
     attachments.inline['charity.jpg'] = File.read(Rails.root.join('app', 'assets', 'images', 'charity.jpg'))
 
     mail to: @fd.donor.email

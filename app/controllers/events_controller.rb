@@ -14,7 +14,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    debugger
     event = Event.new event_params
     event.user = current_user
     thumbnail_file_path = "abra/event/thumbnail/#{Time.now.strftime("%Y/%m/%d/")}#{SecureRandom.hex(13)}#{File.extname(params[:event][:thumbnail_url].original_filename)}"
