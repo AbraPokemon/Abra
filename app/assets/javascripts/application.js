@@ -16,6 +16,7 @@
 //= require mousetrap-global-bind.min
 //= require velocity.min
 //= require velocity.ui
+//= require highcharts
 //= require masonry.pkgd.min
 //= require turbolinks
 //= require jquery.formvalidate

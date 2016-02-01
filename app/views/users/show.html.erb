@@ -1,0 +1,332 @@
+<div class="wrapper user-detail">
+  <div class="left">
+
+    <div class="user-info">
+      <div class="avatar">
+        <img src="http://placeimg.com/300/300/people" />
+        <div class="info">
+          <h4>Admin</h4>
+          <span>amdin@gmail.com</span>
+        </div>
+      </div>
+      <ul>
+        <li><label><i class="fa fa-calendar"></i> Sinh ngày:</label> 08/06/1985</li>
+        <li><label><i class="fa fa-home"></i> Địa chỉ:</label> 5/6 Cô Giang, P9, TP Đà Lạt, Lâm Đồng</li>
+        <li><label><i class="fa fa-mobile"></i> Số điện thoại:</label> 0909 809 070</li>
+      </ul>
+      <div class="buttons">
+        <a class="button main icon"><i class="fa fa-pencil"></i> Cập nhật thông tin </a>
+      </div>
+    </div>
+
+    <div class="idea-info">
+      <h4>Các ý tưởng của cá nhân</h4>
+      <ul class="list">
+        <li class="in-process">
+          <h5>Sẻ chia yêu thương</h5>
+          <ul>
+            <li><strong>Số tiền thu được:</strong> 50,256,000 VNĐ</li>
+            <li><strong>Số người tham gia:</strong> 40 người</li>
+          </ul>
+          <ul>
+            <li><strong>Mục tiêu:</strong> 80,00,000 VNĐ</li>
+            <li><strong>Ngày hết hạn:</strong> 20/02/2016</li>
+          </ul>
+        </li>
+        <li class="success">
+          <h5>Chiếc khăn gió ấm</h5>
+          <ul>
+            <li><strong>Số tiền thu được:</strong> 40,000,000 VNĐ</li>
+            <li><strong>Số người tham gia:</strong> 100 người</li>
+          </ul>
+          <ul>
+            <li class="bad"><i class="fa fa-frown-o"></i> 10 người</li>
+            <li class="normal"><i class="fa fa-meh-o"></i> 30 người</li>
+            <li class="good"><i class="fa fa-smile-o"></i> 60 người</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="idea-info">
+      <h4>Các ý tưởng đã tham gia</h4>
+      <ul class="list">
+        <li class="in-process">
+          <h5>Sẻ chia yêu thương</h5>
+          <ul>
+            <li><strong>Số tiền thu được:</strong> 50,256,000 VNĐ</li>
+            <li><strong>Số người tham gia:</strong> 40 người</li>
+          </ul>
+          <ul>
+            <li><strong>Mục tiêu:</strong> 80,00,000 VNĐ</li>
+            <li><strong>Ngày hết hạn:</strong> 20/02/2016</li>
+          </ul>
+        </li>
+        <li class="success">
+          <h5>Chiếc khăn gió ấm</h5>
+          <ul>
+            <li><strong>Số tiền thu được:</strong> 40,000,000 VNĐ</li>
+            <li><strong>Số người tham gia:</strong> 100 người</li>
+          </ul>
+          <ul>
+            <li class="bad"><i class="fa fa-frown-o"></i> 10 người</li>
+            <li class="normal"><i class="fa fa-meh-o"></i> 30 người</li>
+            <li class="good"><i class="fa fa-smile-o"></i> 60 người</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="right">
+    <ul class="double">
+      <li id="idea_status"></li>
+      <li id="donate_status"></li>
+    </ul>
+    <div id="money_donate_status"></div>
+    <div id="money_status"></div>
+  </div>
+
+
+</div>
+
+<script>
+  $(function () {
+    $('#idea_status').highcharts({
+        chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          plotShadow: false,
+          type: 'pie'
+        },
+        colors: ['#14892c', '#f6c342', '#d04437'],
+        title: {
+          text: 'Tỉ lệ ý tưởng thành công'
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+          pie: {
+              allowPointSelect: true,
+              cursor: 'pointer',
+              dataLabels: {
+                  enabled: false
+              },
+              showInLegend: true
+          }
+        },
+        series: [{
+          name: 'Tỉ lệ',
+          colorByPoint: true,
+          data: [{
+              name: 'Thành công',
+              y: 20,
+              sliced: true,
+              selected: true
+          }, {
+              name: 'Đang kêu gọi',
+              y: 75
+          }, {
+              name: 'Thất bại',
+              y: 5
+          }]
+        }]
+    });
+
+    $('#donate_status').highcharts({
+        chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          plotShadow: false,
+          type: 'pie'
+        },
+        colors: ['#14892c', '#f6c342', '#d04437'],
+        title: {
+          text: 'Tỉ lệ ủng hộ thành công'
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+          pie: {
+              allowPointSelect: true,
+              cursor: 'pointer',
+              dataLabels: {
+                  enabled: false
+              },
+              showInLegend: true
+          }
+        },
+        series: [{
+          name: 'Tỉ lệ',
+          colorByPoint: true,
+          data: [{
+              name: 'Thành công',
+              y: 45,
+              sliced: true,
+              selected: true
+          }, {
+              name: 'Đang kêu gọi',
+              y: 55
+          }, {
+              name: 'Thất bại',
+              y: 0
+          }]
+        }]
+    });
+
+
+
+    $('#money_status').highcharts({
+        chart: {
+            zoomType: 'xy'
+        },
+        title: {
+            text: 'Số tiền tham gia vào các ý '
+        },
+        subtitle: {
+            text: 'Số liệu năm 2015'
+        },
+        xAxis: [{
+            categories: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6',
+                'T7', 'T8', 'T9', 'T10', 'T11', 'T12'],
+            crosshair: true
+        }],
+        colors: ['#3572b0', '#f15c75'],
+        yAxis: [{ // Secondary yAxis
+            title: {
+                text: 'Số tiền đóng góp',
+                style: {
+                    color: "#f15c75"
+                }
+            },
+            labels: {
+                format: '{value} VNĐ',
+                style: {
+                    color: "#f15c75"
+                }
+            },
+            opposite: true
+        },{ // Primary yAxis
+            labels: {
+                format: '{value}',
+                style: {
+                    color: "#3572b0"
+                }
+            },
+            title: {
+                text: 'Ý tưởng',
+                style: {
+                    color: "#3572b0"
+                }
+            }
+        }],
+        tooltip: {
+            shared: true
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'left',
+            x: 120,
+            verticalAlign: 'top',
+            y: 100,
+            floating: true,
+            backgroundColor: '#FFFFFF'
+        },
+        series: [{
+            name: 'Ý tưởng',
+            type: 'column',
+            yAxis: 1,
+            data: [0, 1, 3, 0, 1, 0, 0, 5, 2, 3, 1, 1],
+            tooltip: {
+                valueSuffix: ''
+            }
+
+        },{
+            name: 'Số tiền đóng góp',
+            type: 'spline',
+            data: [0, 300000, 6000000, 0, 500000, 0, 0, 1000000, 1500000, 7000000, 5000000, 500000, 100000],
+            tooltip: {
+                valueSuffix: ' VNĐ'
+            }
+        }]
+    });
+
+$   ('#money_donate_status').highcharts({
+        chart: {
+            zoomType: 'xy'
+        },
+        title: {
+            text: 'Số tiền được ủng hộ vào các ý tưởng1'
+        },
+        subtitle: {
+            text: 'Số liệu năm 2015'
+        },
+        xAxis: [{
+            categories: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6',
+                'T7', 'T8', 'T9', 'T10', 'T11', 'T12'],
+            crosshair: true
+        }],
+        colors: ['#3572b0', '#f15c75'],
+        yAxis: [{ // Secondary yAxis
+            title: {
+                text: 'Số tiền được ủng hộ',
+                style: {
+                    color: "#f15c75"
+                }
+            },
+            labels: {
+                format: '{value} VNĐ',
+                style: {
+                    color: "#f15c75"
+                }
+            },
+            opposite: true
+        },{ // Primary yAxis
+            labels: {
+                format: '{value}',
+                style: {
+                    color: "#3572b0"
+                }
+            },
+            title: {
+                text: 'Ý tưởng',
+                style: {
+                    color: "#3572b0"
+                }
+            }
+        }],
+        tooltip: {
+            shared: true
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'left',
+            x: 120,
+            verticalAlign: 'top',
+            y: 100,
+            floating: true,
+            backgroundColor: '#FFFFFF'
+        },
+        series: [{
+            name: 'Ý tưởng',
+            type: 'column',
+            yAxis: 1,
+            data: [0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1],
+            tooltip: {
+                valueSuffix: ''
+            }
+
+        },{
+            name: 'Số tiền được ủng hộ',
+            type: 'spline',
+            data: [0, 0, 60000000, 0, 5500000, 0, 0, 0, 76490000, 0, 0, 3520000],
+            tooltip: {
+                valueSuffix: ' VNĐ'
+            }
+        }]
+    });
+
+  });
+</script>
