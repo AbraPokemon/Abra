@@ -21,7 +21,7 @@
       <%= raw(@event.story) %>
     </div>
     <h3>Bản đồ</h3>
-    <div class="block map" id="map"></div>
+    <div class="block map" id="mapdetail"></div>
     <h3>Bình luận</h3>
     <div class="block list-comments">
       <%= render 'comments/comment_list' %>
@@ -53,29 +53,31 @@
           <input type="number" id="amount" class="" >
           <button id="customButton">Ủng Hộ</button>
           <script>
-            var handler = StripeCheckout.configure({
-              key: "<%= Rails.configuration.stripe[:publishable_key] %>",
-              image: '/img/documentation/checkout/marketplace.png',
-              locale: 'auto',
-              token: function(token) {
-                $('#donation_form').submit();
-              }
-            });
-
-            $('#customButton').on('click', function(e) {
-              var amount = $("#amount").val();
-              handler.open({
-                name: 'Ủng hộ <%= @event.name %>',
-                description: '<%= current_user.email %>',
-                amount: amount,
-                currency: 'VND'
+            $(document).ready(function(){
+              var handler = StripeCheckout.configure({
+                key: "<%= Rails.configuration.stripe[:publishable_key] %>",
+                image: '/img/documentation/checkout/marketplace.png',
+                locale: 'auto',
+                token: function(token) {
+                  $('#donation_form').submit();
+                }
               });
-              e.preventDefault();
-            });
 
-            // Close Checkout on page navigation
-            $(window).on('popstate', function() {
-              handler.close();
+              $('#customButton').on('click', function(e) {
+                var amount = $("#amount").val();
+                handler.open({
+                  name: 'Ủng hộ <%= @event.name %>',
+                  description: '<%= current_user.email %>',
+                  amount: amount,
+                  currency: 'VND'
+                });
+                e.preventDefault();
+              });
+
+              // Close Checkout on page navigation
+              $(window).on('popstate', function() {
+                handler.close();
+              });
             });
           </script>
         <% end %>
@@ -109,8 +111,8 @@
 
 <script>
   function initialize() {
-    var bangalore = { lat: 12.97, lng: 77.59 };
-    var map = new google.maps.Map(document.getElementById('map'), {
+    var bangalore = { lat: parseFloat("<%= @event.latitude %>"), lng: parseFloat("<%= @event.longitude %>") };
+    var map = new google.maps.Map(document.getElementById('mapdetail'), {
       zoom: 15,
       scrollwheel: false,
       center: bangalore
