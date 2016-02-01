@@ -19,11 +19,9 @@ class EventMailer < ApplicationMailer
     mail to: "to@localhost.org"
   end
 
-  def event_completed_survey
-    @event = Event.first
-    attachments.inline['charity.jpg'] = File.read(Rails.root.join('app', 'assets', 'images', 'charity.jpg'))
-    attachments.inline['star.ico'] = File.read(Rails.root.join('app', 'assets', 'images', 'star.ico'))
+  def event_completed_survey(event)
+    @event = event
+    mail to: "nvh0412@gmail.com"
+  end
 
-    mail to: "to@localhost.org"
-  end  
 end

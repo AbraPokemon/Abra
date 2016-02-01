@@ -1,29 +1,65 @@
-<table width="600" bgcolor="#cccccc">
-  <tbody>
-    <tr>
-      <td align="center" valign="top">
-        <table width="500" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" valign="top" style="overflow:hidden!important;border-radius:3px">
-          <tbody>
-            <tr>
-              <td align="center" width="500"><%= image_tag attachments['charity.jpg'].url %></td>
-            </tr>
-            <tr>
-              <td><h3><%= @event.name %></h3></td>
-            </tr>
-            <tr>
-              <td><%= @event.short_description %></td>
-            </tr>
-          </tbody>
-        </table>
-      </td>
-    </tr>
-  </tbody> 
-</table>
-<p>This event have ended recently. How was the event?</p>
-<div>
-  <%= image_tag attachments['star.ico'].url, :style => "width:40px;height:40px;cursor:pointer" %>
-  <%= image_tag attachments['star.ico'].url, :style => "width:40px;height:40px;cursor:pointer" %>
-  <%= image_tag attachments['star.ico'].url, :style => "width:40px;height:40px;cursor:pointer" %>
-  <%= image_tag attachments['star.ico'].url, :style => "width:40px;height:40px;cursor:pointer" %>
-  <%= image_tag attachments['star.ico'].url, :style => "width:40px;height:40px;cursor:pointer" %>
-</div>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title></title>
+    <style></style>
+  </head>
+  <body>
+    <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable" style="font-family: arial;color: #333;">
+      <tr>
+        <td align="center" valign="top">
+            <table border="0" cellpadding="10" cellspacing="0" width="800" id="emailContainer">
+                <tr>
+                    <td align="left" valign="top">
+                      <%= image_tag 'logo.png', style: "width:200px" %>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" valign="top">
+                      <%= image_tag @event.thumbnail_url, style: "width:100%" %>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top" style="line-height: 25px;">
+                        <p>Thân chào <strong>Nguyễn Văn Hoà</strong>,</p>
+                        <p>Cám ơn bạn đã tham gia vào chương trình <strong style="color: #f15c75;"><%= @event.name %></strong>. Chương trình đã kết thúc nhưng chúng tôi vẫn muốn biết đánh giá của bạn, nhằm khắc phục những sai sót (nếu có) vào chương trình tiếp theo.</p>
+
+                        <p>Bạn đánh giá về sự hữu ích của chương trình này bao nhiêu điểm theo thang điểm từ 1 đến 10</p>
+
+                        <table align="center" border="0" cellpadding="10" cellspacing="10" width="400">
+                            <tr align="center">
+                                <td style="background-color: #d04437;border-radius: 10px;color: #fff;padding: 0 15px;">1</td>
+                                <td style="background-color: #d04437;border-radius: 10px;color: #fff;padding: 0 15px;">2</td>
+                                <td style="background-color: #d04437;border-radius: 10px;color: #fff;padding: 0 15px;">3</td>
+                                <td style="background-color: #d04437;border-radius: 10px;color: #fff;padding: 0 15px;">4</td>
+                                <td style="background-color: #f6c342;border-radius: 10px;color: #fff;padding: 0 15px;">5</td>
+                                <td style="background-color: #f6c342;border-radius: 10px;color: #fff;padding: 0 15px;">6</td>
+                                <td style="background-color: #f6c342;border-radius: 10px;color: #fff;padding: 0 15px;">7</td>
+                                <td style="background-color: #14892c;border-radius: 10px;color: #fff;padding: 0 15px;">8</td>
+                                <td style="background-color: #14892c;border-radius: 10px;color: #fff;padding: 0 15px;">9</td>
+                                <td style="background-color: #14892c;border-radius: 10px;color: #fff;padding: 0 15px;">10</td>
+                            </tr>
+                            <tr align="center">
+                                <td colspan="4" style="color: #d04437;">Quá tệ</td>
+                                <td colspan="3" style="color: #f6c342;">Bình thường</td>
+                                <td colspan="3" style="color: #14892c;">Rất có ích</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" valign="top">
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" valign="top" style="background-color: #333;color: #fff;font-size: 13px;">
+                        Copyright © 2016 ALL RIGHTS RESERVED BY ABRA TEAM
+                    </td>
+                </tr>
+            </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

@@ -45,43 +45,42 @@
         <label>Ngày kết thúc</label>
         <span><%= @event.donation_due_date.strftime("%d/%m/%Y") %></span>
       </div>
-      <% if signed_in? %>
-      <center>
-        <script src="https://checkout.stripe.com/checkout.js"></script>
-        <%= form_tag donations_path, id: "donation_form" do |f| %>
-          <%= hidden_field(:donation, :event_id, value: @event.id) %>
-          <input type="number" id="amount" class="" >
-          <button id="customButton">Ủng Hộ</button>
-          <script>
-            $(document).ready(function(){
-              var handler = StripeCheckout.configure({
-                key: "<%= Rails.configuration.stripe[:publishable_key] %>",
-                image: '/img/documentation/checkout/marketplace.png',
-                locale: 'auto',
-                token: function(token) {
-                  $('#donation_form').submit();
-                }
-              });
-
-              $('#customButton').on('click', function(e) {
-                var amount = $("#amount").val();
-                handler.open({
-                  name: 'Ủng hộ <%= @event.name %>',
-                  description: '<%= current_user.email %>',
-                  amount: amount,
-                  currency: 'VND'
+      <% if signed_in? && !@event.is_valid? %>
+        <center>
+          <%= form_tag donations_path, id: "donation_form" do |f| %>
+            <%= hidden_field(:donation, :event_id, value: @event.id) %>
+            <input type="number" id="amount" class="" >
+            <button id="customButton">Ủng Hộ</button>
+            <script>
+              $(document).ready(function(){
+                var handler = StripeCheckout.configure({
+                  key: "<%= Rails.configuration.stripe[:publishable_key] %>",
+                  image: "<%= image_path 'logo.png' %>",
+                  locale: 'auto',
+                  token: function(token) {
+                    $('#donation_form').submit();
+                  }
                 });
-                e.preventDefault();
-              });
 
-              // Close Checkout on page navigation
-              $(window).on('popstate', function() {
-                handler.close();
+                $('#customButton').on('click', function(e) {
+                  var amount = $("#amount").val();
+                  handler.open({
+                    name: 'Ủng hộ <%= @event.name %>',
+                    description: '<%= current_user.email %>',
+                    amount: amount,
+                    currency: 'VND'
+                  });
+                  e.preventDefault();
+                });
+
+                // Close Checkout on page navigation
+                $(window).on('popstate', function() {
+                  handler.close();
+                });
               });
-            });
-          </script>
-        <% end %>
-      </center>
+            </script>
+          <% end %>
+        </center>
       <% end %>
     </div>
 

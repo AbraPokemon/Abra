@@ -9,6 +9,7 @@
     </div>
     <%= f.input :short_description, :label => "Giới thiệu ", as: :text %>
     <%= f.input :location, :label => "Địa điểm", input_html: { id: "autocomplete", onFocus: "geolocate()" } %>
+    <%= f.input :phone_number, :lable => "Số điện thoại:", as: :text %>
 
     <%= f.input :city, :as => :hidden, input_html: { id: "city" }  %>
 

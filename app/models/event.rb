@@ -3,6 +3,7 @@ class Event < ActiveRecord::Base
   after_validation :geocode          # auto-fetch coordinates
 
   after_update :notify_system
+  before_save :check_over
 
   belongs_to :user
   belongs_to :category
@@ -39,10 +40,35 @@ class Event < ActiveRecord::Base
     votes.size
   end
 
+  def send_sms
+    message = "\nXin chúc mừng:\n"
+    message += "Ý tưởng của bạn đã quyên góp đủ số tiền.\n"
+    message += "\nÝ tưởng: #{name}"
+    message += "\nTổng số tiền nhận được: #{donations.sum(:amount)} VNĐ"
+    message += "\n\nHãy thực hiện ý tưởng của bạn vì cộng đồng"
+    @client = Twilio::REST::Client.new "AC1f944d7f633a1bd6d3a87d6ca62ef497", "d323885b3cfdcb0aaa079ba5b60998c3"
+    @client.messages.create(
+      from: "+12017318643",
+      to: "+841289816416",
+      body: message
+    )
+  end
+
+  def is_valid?
+    donations.sum(:amount) >= required_amount
+  end
+
   private
   def notify_system
     if changes['enable']
       notifications.create(message: "vừa được khởi tạo")
+    end
+  end
+
+  def check_over
+    if success
+      SendSmsWorker.new.perform(id)
+      SendEmailEventCloseWorker.new.perform(id)
     end
   end
 

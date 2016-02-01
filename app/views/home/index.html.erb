@@ -4,7 +4,7 @@
       <div id="ri-grid" class="ri-grid">
         <%= image_tag "loading.gif", class: "ri-loading-image" %>
         <ul>
-          <% Event.all.pluck(:thumbnail_url).each do |thumbnail| %>
+          <% Event.order(created_at: :desc).pluck(:thumbnail_url).each do |thumbnail| %>
             <li>
               <%= link_to '#' do %>
                 <%= image_tag thumbnail %>
