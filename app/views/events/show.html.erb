@@ -4,7 +4,7 @@
       <%= image_tag @event.thumbnail_url %>
       <div class="event-contents text-center">
         <h3><%= @event.name %></h3>
-        <p><%= truncate(@event.short_description, 400) %>.</p>
+        <p><%= truncate(@event.short_description, length: 400) %>.</p>
       </div>
     </li>
   </ul>
