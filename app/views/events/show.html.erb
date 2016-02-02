@@ -109,20 +109,7 @@
 </div>
 
 <script>
-  function initialize() {
-    var bangalore = { lat: parseFloat("<%= @event.latitude %>"), lng: parseFloat("<%= @event.longitude %>") };
-    var map = new google.maps.Map(document.getElementById('mapdetail'), {
-      zoom: 15,
-      scrollwheel: false,
-      center: bangalore
-    });
-
-    var marker = new google.maps.Marker({
-      position: bangalore,
-      map: map
-    });
-  }
-
-  google.maps.event.addDomListener(window, 'load', initialize);
+  
+  
 </script>
 
