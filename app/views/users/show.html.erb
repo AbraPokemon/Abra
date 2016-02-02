@@ -5,8 +5,12 @@
       <div class="avatar">
         <%= image_tag @user.avatar_url %>
         <div class="info">
-          <h4>@user.full_name</h4>
-          <span>@user.email</span>
+          <% if @user.full_name %>
+            <h4><%= @user.full_name %></h4>
+          <% else %>
+            <h4>Nguyễn Văn Hoà</h4>
+          <% end %>
+          <span><%= @user.email %></span>
         </div>
       </div>
       <ul>
