@@ -1,7 +1,16 @@
 ready = ->
-  $('#ri-grid').gridrotator w1024:
-    rows: 4
-    columns: 16
+  $('#ri-grid').gridrotator 
+    w1024:
+      rows: 4
+      columns: 16
+    step: 24
+    maxStep: 24
+    animType: 'random'
+    animSpeed: 500
+    animEasingOut: 'linear'
+    animEasingIn: 'linear'
+    interval: 3000
+    slideshow: true
 
   labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   labelIndex = 0

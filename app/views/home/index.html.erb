@@ -2,12 +2,11 @@
   <li>
     <div class="special-event">
       <div id="ri-grid" class="ri-grid">
-        <%= image_tag "loading.gif", class: "ri-loading-image" %>
         <ul>
-          <% Event.order(created_at: :desc).pluck(:thumbnail_url).each do |thumbnail| %>
+          <% Event.order(created_at: :desc).each do |event| %>
             <li>
-              <%= link_to '#' do %>
-                <%= image_tag thumbnail %>
+              <%= link_to event_path(event) do %>
+                <%= image_tag event.thumbnail_url %>
               <% end %>
             </li>
           <% end %>

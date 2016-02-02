@@ -3,10 +3,10 @@
 
     <div class="user-info">
       <div class="avatar">
-        <img src="http://placeimg.com/300/300/people" />
+        <%= image_tag @user.avatar_url %>
         <div class="info">
-          <h4>Admin</h4>
-          <span>amdin@gmail.com</span>
+          <h4>@user.full_name</h4>
+          <span>@user.email</span>
         </div>
       </div>
       <ul>
