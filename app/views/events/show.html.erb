@@ -49,7 +49,7 @@
         <center>
           <%= form_tag donations_path, id: "donation_form" do |f| %>
             <%= hidden_field(:donation, :event_id, value: @event.id) %>
-            <input type="number" id="amount" class="" >
+            <%= number_field(:donation, :amouth, id: "amount") %>
             <button id="customButton">Ủng Hộ</button>
             <script>
               $(document).ready(function(){

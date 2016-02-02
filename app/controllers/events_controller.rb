@@ -4,6 +4,12 @@ class EventsController < ApplicationController
   before_action :get_event, only: [:edit, :show, :update]
 
   def index
+    keyword = params[:keyword]
+    if keyword == "Tại đây"
+
+    else
+      @events = Event.where("name LIKE ?", "%#{keyword}%")
+    end
   end
 
   def show
@@ -25,7 +31,7 @@ class EventsController < ApplicationController
     event.thumbnail_url = obj.public_url
 
     if event.save
-      flash[:success] = "Ý tưởng được tạo thành công"
+      flash[:success] = "Ý tưởng được tạo thành công."
       redirect_to root_path
     else
       render 'new'
